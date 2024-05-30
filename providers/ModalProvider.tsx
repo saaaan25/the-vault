@@ -17,11 +17,11 @@ const ModalProvider = () => {
     return (
         <>
             <Modal 
-                title="Ola rey de mi corazón" 
-                description="Te amo precioso" 
+                title="" 
+                description="" 
                 isOpen 
                 onChange={() => {}}>
-                    Bonito / children
+                    children
             </Modal>
         </>
     )
