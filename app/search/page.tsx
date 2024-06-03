@@ -1,4 +1,5 @@
 import Header from "@/components/Header"
+import Login from "../auth/Login"
 
 const Search = () => {
     return (
@@ -6,7 +7,7 @@ const Search = () => {
             <Header>
                 <></>
             </Header>
-            
+            <Login></Login>
         </div>
     )
 }
