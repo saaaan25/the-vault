@@ -8,7 +8,8 @@ export default function Home() {
     h-full 
     w-full 
     overflow-hidden 
-    overflow-y-auto ">
+    overflow-y-auto
+    ">
       <Header>
         <></>
       </Header>

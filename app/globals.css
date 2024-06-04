@@ -16,3 +16,10 @@ body,
 .bg-custom-color-2 {
   background-color: #F3E6DE;
 }
+
+@font-face {
+  font-family: 'Retropix';
+  src: url('../public/fonts/retropix.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

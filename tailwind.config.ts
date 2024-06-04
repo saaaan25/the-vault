@@ -13,6 +13,10 @@ const config: Config = {
         'custom-color-2': '#F3E6DE',
         'custom-color-3': '#EFCED0',
         'custom-color-4': '#737373',
+      },
+
+      fontFamily: {
+        retropix: ['Retropix', 'sans-serif']
       }
     },
   },
