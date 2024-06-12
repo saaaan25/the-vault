@@ -4,8 +4,8 @@ import "./globals.css"
 import Sidebar from "@/components/Sidebar"
 import SupabaseProvider from "@/providers/SupabaseProvider"
 import UserProvider from "@/providers/UserProvider"
+import LoginModal from "@/components/LoginModal"
 import ModalProvider from "@/providers/ModalProvider"
-import { AuthProvider } from "@/providers/AuthProvider"
 
 const font = Montserrat({ subsets: ["latin"] })
 
@@ -15,22 +15,21 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body className={font.className}>
-        <SupabaseProvider>
-          <UserProvider>
-            
-              <ModalProvider/>
-              <Sidebar>{children}</Sidebar>
-            
-          </UserProvider>
-        </SupabaseProvider>
-      </body>
-    </html>
-  )
+    
+    return (
+        <html lang="es">
+            <body className={font.className}>
+                <SupabaseProvider>
+                    <UserProvider>
+                        <ModalProvider/>
+                        <Sidebar>{children}</Sidebar>
+                    </UserProvider>
+                </SupabaseProvider>
+            </body>
+        </html>
+    )
 }

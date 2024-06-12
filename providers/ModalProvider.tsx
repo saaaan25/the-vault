@@ -1,7 +1,7 @@
 "use client"
 
-import Modal from "@/components/Modal"
-import { useEffect, useState } from "react"
+import LoginModal from "@/components/LoginModal"
+import { Children, useEffect, useState } from "react"
 
 const ModalProvider = () => {
     const [isMounted, setIsMounted] = useState(false)
@@ -16,13 +16,7 @@ const ModalProvider = () => {
 
     return (
         <>
-            <Modal 
-                title="Título" 
-                description="Descripción" 
-                isOpen={false}
-                onChange={() => {}}>
-                    children
-            </Modal>
+            <LoginModal/>
         </>
     )
 }

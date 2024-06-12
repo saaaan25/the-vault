@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { BiLibrary, BiSearch } from "react-icons/bi"
 import { HiHome, HiUser } from "react-icons/hi"
 import Box from "./Box"
@@ -20,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         {
             icon: HiHome,
             label: 'Home',
-            active: active === '/home',
+            active: active == '/home',
             href: '/home',
         },
         {

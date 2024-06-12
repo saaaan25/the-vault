@@ -23,3 +23,20 @@ body,
   font-weight: normal;
   font-style: normal;
 }
+
+.auth-container .supabase-auth-ui_separator {
+  display: none;
+}
+
+/* Ajusta el diseño según tus necesidades */
+.auth-container .supabase-auth-ui_card {
+  border: none; /* Quita el borde si es necesario */
+  box-shadow: none; /* Quita la sombra si es necesario */
+}
+
+/* Ajusta los márgenes o el padding si es necesario */
+.auth-container .supabase-auth-ui_input,
+.auth-container .supabase-auth-ui_button {
+  margin: 0; /* Ajusta los márgenes */
+  padding: 10px; /* Ajusta el padding */
+}

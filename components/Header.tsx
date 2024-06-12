@@ -6,6 +6,7 @@ import { HiHome, HiUser } from "react-icons/hi"
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx"
 import { twMerge } from "tailwind-merge"
 import Button from "./Button"
+import useAuth from "@/hooks/useAuth"
 
 interface HeaderProps {
     children: React.ReactNode
@@ -14,11 +15,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ( {children, className}) => {
     const router = useRouter()
+    const authModal = useAuth()
     
-    const handleLogout = () => {
-        //ola
-    }
-
     return ( 
         <div className={twMerge(`
         h-fit
@@ -63,6 +61,17 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
                         <RxCaretRight className="text-custom-color-2" size={35}></RxCaretRight>
                     </button>
                 </div>
+                <button className="
+                            bg-custom-color
+                            pl-5
+                            pr-5
+                            pt-0.5
+                            pb-0.5
+                            rounded
+                            text-xl"
+                            onClick={authModal.onOpen}>
+                            Iniciar Sesión
+                        </button>
                 <div className="flex md:hidden gap-x-2.5">
                     <button className="
                     rounded-full

@@ -1,15 +1,18 @@
 "use client"
 
-import { useSessionContext, useSupabaseClient } from "@supabase/auth-helpers-react"
-import { useRouter } from "next/navigation"
+import { useState, FormEvent, useMemo, useRef } from "react"
+import { redirect, usePathname, useRouter } from "next/navigation"
 import { FaKey } from "react-icons/fa"
 import { HiUser } from "react-icons/hi"
+import Link from "next/link"
 
-const Login= () => {
-    const supabaseClient = useSupabaseClient()
-    const router = useRouter()
-    const { session } = useSessionContext()
+interface LoginProps {
+    children: React.ReactNode
+    setIsAuthenticated: (isAuthenticated: boolean) => void
+}
 
+const Login: React.FC<LoginProps> = () =>{
+    
     return (
         <div className="
             bg-custom-color-2 
@@ -85,7 +88,8 @@ const Login= () => {
                             <input className="
                             bg-custom-color-2 
                             border-b 
-                            border-custom-color-4" 
+                            border-custom-color-4"
+                        type="password" 
                         size={35}></input>
                         </div>
                     </div>
@@ -102,7 +106,9 @@ const Login= () => {
                             text-sm
                             ">
                             <p>¿No tienes cuenta?
-                                <button className="font-bold ml-2">Regístrate</button>
+                                <button className="font-bold ml-2" type="button" >
+                                    <Link href="../register">Regístrate</Link>
+                                </button>
                             </p>
                         </div>
                         <div>
@@ -114,7 +120,7 @@ const Login= () => {
                                 pb-0.5
                                 rounded
                                 text-xl
-                                ">
+                                " type="submit">
                                 Iniciar sesión
                             </button>
                         </div>
