@@ -7,6 +7,7 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx"
 import { twMerge } from "tailwind-merge"
 import Button from "./Button"
 import useAuth from "@/hooks/useAuth"
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
 interface HeaderProps {
     children: React.ReactNode
@@ -16,6 +17,15 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ( {children, className}) => {
     const router = useRouter()
     const authModal = useAuth()
+    
+    const supabaseClient = useSupabaseClient()
+    //const { user } = useUser()
+
+    const handleLogout = async () => {
+        const { error } = await supabaseClient.auth.signOut()
+
+        router.refresh()
+    }
     
     return ( 
         <div className={twMerge(`
@@ -68,7 +78,7 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
                             pt-0.5
                             pb-0.5
                             rounded
-                            text-xl"
+                            "
                             onClick={authModal.onOpen}>
                             Iniciar Sesión
                         </button>
