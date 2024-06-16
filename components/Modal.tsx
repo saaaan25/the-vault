@@ -88,19 +88,6 @@ const Modal:React.FC<ModalProps> = ({
                                 <IoMdClose/>
                             </button>
                         </Dialog.Close>
-                        <div className="
-                        flex
-                        justify-center
-                        ">
-                            <button className="
-                            bg-custom-color
-                            pl-5
-                            pr-5
-                            rounded-[5px]
-                            ">
-                                Aceptar
-                            </button>
-                        </div>
                     </div>
                 </Dialog.Content>
             </Dialog.Portal>

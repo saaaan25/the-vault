@@ -7,13 +7,11 @@ import { FieldValues, useForm } from "react-hook-form"
 const UploadModal = () => {
     const uploadModal = useUpload()
 
-    const onChange = (open:boolean) => {
-        if (!open) {
-            uploadModal.onClose()
-        }
-    }
-
-    const {} = useForm<FieldValues>({
+    const {
+        register,
+        handleSubmit,
+        reset
+    } = useForm<FieldValues>({
         defaultValues: {
             author: '',
             title: '',
@@ -21,6 +19,13 @@ const UploadModal = () => {
             image: null,
         }
     })
+
+    const onChange = (open:boolean) => {
+        if (!open) {
+            reset()
+            uploadModal.onClose()
+        }
+    }
 
     return (
         <Modal
