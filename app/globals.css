@@ -40,3 +40,7 @@ body,
   margin: 0; /* Ajusta los márgenes */
   padding: 10px; /* Ajusta el padding */
 }
+
+.modalBackground {
+  background: url('/images/modalbg-pink.png') center center / cover no-repeat;
+}

@@ -1,0 +1,45 @@
+interface PlaylistProps {
+    playlist: string
+}
+
+const Playlist:React.FC<PlaylistProps> = ({playlist}) => {
+    return (
+        <div className="
+            h-[200px] 
+            w-[180px] 
+            rounded-lg
+            bg-custom-color-2
+            hover:bg-custom-color-5
+            flex
+            justify-center
+            items-center
+            mr-4
+            mb-2
+            flex-col
+            ">
+            <button className="
+                    bg-custom-color-3  
+                    border
+                    rounded-xl 
+                    border-black 
+                    h-[150px] 
+                    w-[150px]
+                    mt-3
+                    flex
+                    items-center
+                    justify-center
+                    mb-3
+                    ">
+            </button>
+            <div className="
+                flex
+                justify-center
+                items-center
+                ">
+                <p>{playlist}</p>
+            </div>
+        </div>
+    )
+}
+ 
+export default Playlist

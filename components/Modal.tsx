@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog"
 import { IoMdClose } from "react-icons/io"
+import "../app/globals.css"
 
 interface ModalProps {
     isOpen: boolean
@@ -50,54 +51,56 @@ const Modal:React.FC<ModalProps> = ({
                 p-[25px]
                 focus:outline-none
                 ">
-                    <Dialog.Title
-                    className="
-                    text-xl
-                    font-bold
-                    mb-4
-                    ">
-                        {title}
-                    </Dialog.Title>
-                    <Dialog.Description className="
-                    mb-5
-                    text-sm
-                    leading-normal
-                    ">
-                        {description}
-                    </Dialog.Description>
-                    <div className="mb-4">
-                        {children}
-                    </div>
-                    <Dialog.Close asChild>
-                        <button className="
-                        text-black
-                        hover:text-neutral-500
-                        absolute
-                        top-[10px]
-                        right-[10px]
-                        inline-flex
-                        h-[25px]
-                        w-[25px]
-                        appearance-none
-                        items-center
-                        rounded-full
-                        focus:outline-none
+                    <div>
+                        <Dialog.Title
+                        className="
+                        text-xl
+                        font-bold
+                        mb-4
                         ">
-                            <IoMdClose/>
-                        </button>
-                    </Dialog.Close>
-                    <div className="
-                    flex
-                    justify-center
-                    ">
-                        <button className="
-                        bg-custom-color
-                        pl-5
-                        pr-5
-                        rounded-[5px]
+                            {title}
+                        </Dialog.Title>
+                        <Dialog.Description className="
+                        mb-5
+                        text-sm
+                        leading-normal
                         ">
-                            Aceptar
-                        </button>
+                            {description}
+                        </Dialog.Description>
+                        <div className="mb-4">
+                            {children}
+                        </div>
+                        <Dialog.Close asChild>
+                            <button className="
+                            text-black
+                            hover:text-neutral-500
+                            absolute
+                            top-[10px]
+                            right-[10px]
+                            inline-flex
+                            h-[25px]
+                            w-[25px]
+                            appearance-none
+                            items-center
+                            rounded-full
+                            focus:outline-none
+                            ">
+                                <IoMdClose/>
+                            </button>
+                        </Dialog.Close>
+                        <div className="
+                        flex
+                        justify-center
+                        ">
+                            <button className="
+                            bg-custom-color
+                            pl-5
+                            pr-5
+                            rounded-[5px]
+                            ">
+                                Aceptar
+                            </button>
+                        </div>
                     </div>
                 </Dialog.Content>
             </Dialog.Portal>

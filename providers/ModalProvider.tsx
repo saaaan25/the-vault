@@ -1,6 +1,7 @@
 "use client"
 
 import LoginModal from "@/components/LoginModal"
+import UploadModal from "@/components/UploadModal"
 import { Children, useEffect, useState } from "react"
 
 const ModalProvider = () => {
@@ -17,6 +18,7 @@ const ModalProvider = () => {
     return (
         <>
             <LoginModal/>
+            <UploadModal/>
         </>
     )
 }

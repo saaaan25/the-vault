@@ -7,7 +7,9 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx"
 import { twMerge } from "tailwind-merge"
 import Button from "./Button"
 import useAuth from "@/hooks/useAuth"
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
+import { useSupabaseClient } from "@supabase/auth-helpers-react"
+import { useUser } from "@/hooks/useUser"
+import toast from "react-hot-toast"
 
 interface HeaderProps {
     children: React.ReactNode
@@ -19,12 +21,18 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
     const authModal = useAuth()
     
     const supabaseClient = useSupabaseClient()
-    //const { user } = useUser()
+    const { user } = useUser()
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut()
-
+        //reset any playing songs
         router.refresh()
+
+        if (error) {
+            toast.error(error.message)
+        } else {
+            toast.success("Sesión cerrada")
+        }
     }
     
     return ( 
@@ -71,17 +79,6 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
                         <RxCaretRight className="text-custom-color-2" size={35}></RxCaretRight>
                     </button>
                 </div>
-                <button className="
-                            bg-custom-color
-                            pl-5
-                            pr-5
-                            pt-0.5
-                            pb-0.5
-                            rounded
-                            "
-                            onClick={authModal.onOpen}>
-                            Iniciar Sesión
-                        </button>
                 <div className="flex md:hidden gap-x-2.5">
                     <button className="
                     rounded-full
@@ -132,6 +129,32 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
                         <HiUser className="text-custom-color-2" size={30}/>
                     </button>
                 </div>
+                {user ? (
+                    <button className="
+                        bg-custom-color
+                        pl-5
+                        pr-5
+                        pt-0.5
+                        pb-0.5
+                        rounded
+                        "
+                            onClick={handleLogout}>
+                        Cerrar Sesión
+                    </button>
+                ) : (
+                <div>
+                    <button className="
+                        bg-custom-color
+                        pl-5
+                        pr-5
+                        pt-0.5
+                        pb-0.5
+                        rounded
+                        "
+                            onClick={authModal.onOpen}>
+                        Iniciar Sesión
+                    </button>
+                </div>)}
             </div>
             {children}
         </div>
