@@ -2,13 +2,13 @@ import { FaEllipsisV } from "react-icons/fa"
 
 interface SongModel2Props {
     song: string
-    artist: string
+    autor: string
     album: string
     duration: string
 }
 
 
-const SongModel2:React.FC<SongModel2Props> = ({song, artist, album, duration}) => {
+const SongModel2:React.FC<SongModel2Props> = ({song, autor, album, duration}) => {
     return (
         <div className="
             bg-custom-color-2 
@@ -38,7 +38,7 @@ const SongModel2:React.FC<SongModel2Props> = ({song, artist, album, duration}) =
                 ">
                 <div className="flex-col">
                     <p className="font-bold">{song}</p>
-                    <p className="text-sm">{artist}</p>
+                    <p className="text-sm">{autor}</p>
                 </div>
                 <div className="flex items-center">
                     <p className="text-sm">{album}</p>

@@ -1,8 +1,12 @@
-const Button = () => {
+interface ButtonProps {
+    text: string
+}
+
+const Button:React.FC<ButtonProps> = ({ text }) => {
     return (
-        <div>
-            Button
-        </div>
+        <button className="bg-custom-color rounded-md h-[30px] w-fit px-5">
+            {text}
+        </button>
     )
 }
  

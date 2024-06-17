@@ -77,7 +77,7 @@ const Library = () => {
                     <SongModel1 song="Canción 1"/>
                 </div>
                 <div>
-                    <SongModel2 song="Canción 2" artist="Artista 2" album="Album 2" duration="11:16"/>
+                    <SongModel2 song="Canción 2" autor="Artista 2" album="Album 2" duration="11:16"/>
                 </div>
             </div>
         </div>
