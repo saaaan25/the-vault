@@ -1,6 +1,22 @@
+"use client"
+
 import Header from "@/components/Header"
+import useAuth from "@/hooks/useAuth"
+import useUpload from "@/hooks/useUpload"
+import { useUser } from "@/hooks/useUser"
 
 export default function Home() {
+  const authModal = useAuth()
+  const { user } = useUser()
+  const uploadModal = useUpload()
+
+  const onClick = () => {
+    if (!user) {
+      return authModal.onOpen()
+    }
+
+    return uploadModal.onOpen()
+  }
   return (
     <div className=" 
     bg-custom-color-2 
@@ -27,8 +43,22 @@ export default function Home() {
           </h1>
         </div>
         <div>
-            Lista de canciones
-         </div>
+          <button className="
+            bg-custom-color-3  
+            border
+            rounded-xl 
+            border-black 
+            h-fit 
+            w-fit
+            p-3
+            mt-3
+            flex
+            items-center
+            justify-center"
+              onClick={onClick}>
+            <p className="text-md">Agregar Canción</p>
+          </button>
+        </div>
       </div>
     </div>
   )
