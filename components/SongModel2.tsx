@@ -25,9 +25,7 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
             <div className="
                 ml-6
                 mr-4
-                bg-custom-color
                 border
-                border-black
                 rounded-xl
                 h-[58px]
                 w-[58px]
@@ -35,8 +33,10 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
                 <Image
                     className="object-cover"
                     src={imagePath || '/images/portadapredet.png'}
-                    fill
                     alt="Image"
+                    width={100}
+                    height={100}
+                    style={{ borderRadius: '5px' }}
                 />
             </div>
             <div className="

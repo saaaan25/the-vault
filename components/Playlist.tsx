@@ -14,7 +14,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
         <div className="
             relative
             groups
-            gap-x-6 
+            gap-x-5
             rounded-lg
             bg-custom-color-5
             hover:bg-custom-color-3
@@ -32,7 +32,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
                 bg-custom-color-3
                 border-black
                 aspect-square
-                w-full
+                w-[95%]
                 h-full
                 rounded-lg
                 ">
@@ -41,6 +41,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
                     src={imagePath || '/images/portadapredet.png'}
                     fill
                     alt="Image"
+                    style={{ borderRadius: '5px' }}
                 />
             </div>
             <div className="

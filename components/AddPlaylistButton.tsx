@@ -18,8 +18,8 @@ const AddPlaylistButton = () => {
     }
     return (
         <div className="
-                h-[200px] 
-                w-[180px] 
+                h-[230px] 
+                w-[207px] 
                 rounded-lg
                 bg-custom-color-2
                 flex
@@ -31,8 +31,8 @@ const AddPlaylistButton = () => {
                 hover:bg-custom-color-6
                 rounded-xl
                 shadow-lg 
-                h-[150px] 
-                w-[150px]
+                h-[172px]
+                w-[172px]
                 mt-3
                 flex
                 items-center

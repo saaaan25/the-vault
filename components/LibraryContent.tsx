@@ -1,9 +1,8 @@
 "use client"
 
-import type { Playlist, Song } from "@/types"
+import type { Playlist } from "@/types"
 import PlaylistItem from "./Playlist"
 import AddPlaylistButton from "./AddPlaylistButton"
-import SongModel2 from "./SongModel2"
 
 interface LibraryContentProps {
     playlists: Playlist[]
