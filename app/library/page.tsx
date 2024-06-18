@@ -1,25 +1,15 @@
-"use client"
-
+import getPlaylists from "@/actions/getPlaylists"
+import getSongs from "@/actions/getSongs"
+import AddPlaylistButton from "@/components/AddPlaylistButton"
 import Header from "@/components/Header"
-import Playlist from "@/components/Playlist"
-import SongModel1 from "@/components/SongModel1"
-import SongModel2 from "@/components/SongModel2"
-import useAuth from "@/hooks/useAuth"
-import useUpload from "@/hooks/useUpload"
-import { useUser } from "@/hooks/useUser"
+import LibraryContent from "@/components/LibraryContent"
+import UploadPlaylistModal from "@/components/UploadPlaylistModal"
 
-const Library = () => {
-    const authModal = useAuth()
-    const { user } = useUser()
-    const uploadModal = useUpload()
+export const revalidate = 0
 
-    const onClick = () => {
-        if (!user) {
-            return authModal.onOpen()
-        }
+export default async function Library() {
+    const playlists = await getPlaylists()
 
-        return uploadModal.onOpen()
-    }
     return (
         <div className=" 
             bg-custom-color-2 
@@ -28,6 +18,8 @@ const Library = () => {
             w-full 
             overflow-hidden 
             overflow-y-auto
+            flex
+            flex-col
             ">
             <Header>
                 <></>
@@ -46,42 +38,11 @@ const Library = () => {
                         Tu biblioteca
                     </h1>
                 </div>
-                <div className="mt-4 flex">
-                    <Playlist playlist="Playlist 1"/>
-                    <Playlist playlist="Playlist 2"/>
-                    <div className="
-                        h-[200px] 
-                        w-[180px] 
-                        rounded-lg
-                        bg-custom-color-2
-                        flex
-                        justify-center
-                        ">
-                        <button className="
-                            bg-custom-color-3  
-                            border
-                            rounded-xl 
-                            border-black 
-                            h-[150px] 
-                            w-[150px]
-                            mt-3
-                            flex
-                            items-center
-                            justify-center"
-                            onClick={onClick}>
-                            <p className="font-thin text-9xl">+</p>
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <SongModel1 song="Canción 1"/>
-                </div>
-                <div>
-                    <SongModel2 song="Canción 2" autor="Artista 2" album="Album 2" duration="11:16"/>
+                <div className="flex mt-6">
+                    <LibraryContent playlists={playlists}/>
                 </div>
             </div>
+            <UploadPlaylistModal/>
         </div>
     )
 }
- 
-export default Library

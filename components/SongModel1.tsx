@@ -1,8 +1,15 @@
+import useLoadImage from "@/hooks/useLoadImage"
+import { Song } from "@/types"
+import Image from 'next/image'
+
 interface SongModel1Props {
-    song: string
+    data: Song
+    onClick: (id: string) => void
 }
 
-const SongModel1:React.FC<SongModel1Props> = ({song}) => {
+const SongModel1:React.FC<SongModel1Props> = ({data, onClick}) => {
+    const imagePath = useLoadImage(data)
+
     return (
         <div className="
             h-[200px] 
@@ -16,27 +23,20 @@ const SongModel1:React.FC<SongModel1Props> = ({song}) => {
             mr-4
             flex-col
             mb-2
-            ">
-            <button className="
-                    bg-custom-color-3  
-                    border
-                    rounded-xl 
-                    border-black 
-                    h-[150px] 
-                    w-[150px]
-                    mt-3
-                    flex
-                    items-center
-                    justify-center
-                    mb-3
-                    ">
-            </button>
+            "
+            onClick={() => onClick(data.id)}>
+            
+            <Image className="object-cover"
+            src={imagePath || 'images/modalbg-pink.png'}
+            fill
+            alt="Image"
+            />
             <div className="
                 flex
                 justify-center
                 items-center
                 ">
-                <p>{song}</p>
+                <p>{data.title}</p>
             </div>
         </div>
     )

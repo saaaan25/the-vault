@@ -1,14 +1,16 @@
+import { Song } from "@/types"
 import { FaEllipsisV } from "react-icons/fa"
+import Image from 'next/image'
+import useLoadImage from "@/hooks/useLoadImage"
 
 interface SongModel2Props {
-    song: string
-    autor: string
-    album: string
-    duration: string
+    data: Song
+    onClick: (id: string) => void
 }
 
+const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
+    const imagePath = useLoadImage(data)
 
-const SongModel2:React.FC<SongModel2Props> = ({song, autor, album, duration}) => {
     return (
         <div className="
             bg-custom-color-2 
@@ -30,6 +32,12 @@ const SongModel2:React.FC<SongModel2Props> = ({song, autor, album, duration}) =>
                 h-[58px]
                 w-[58px]
             ">
+                <Image
+                    className="object-cover"
+                    src={imagePath || '/images/portadapredet.png'}
+                    fill
+                    alt="Image"
+                />
             </div>
             <div className="
                 flex 
@@ -37,14 +45,14 @@ const SongModel2:React.FC<SongModel2Props> = ({song, autor, album, duration}) =>
                 w-[85%]
                 ">
                 <div className="flex-col">
-                    <p className="font-bold">{song}</p>
-                    <p className="text-sm">{autor}</p>
+                    <p className="font-bold">{data.title}</p>
+                    <p className="text-sm">{data.autor}</p>
                 </div>
                 <div className="flex items-center">
-                    <p className="text-sm">{album}</p>
+                    <p className="text-sm"></p>
                 </div>
                 <div className="flex items-center">
-                    <p className="text-sm">{duration}</p>
+                    <p className="text-sm"></p>
                 </div>
             </div>
             <div className="
