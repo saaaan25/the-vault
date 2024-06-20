@@ -2,6 +2,7 @@ import { Song } from "@/types"
 import { FaEllipsisV } from "react-icons/fa"
 import Image from 'next/image'
 import useLoadImage from "@/hooks/useLoadImage"
+import PlayButton from "./PlayButton"
 
 interface SongModel2Props {
     data: Song
@@ -29,6 +30,10 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
                 rounded-xl
                 h-[58px]
                 w-[58px]
+                relative
+                flex
+                items-center
+                justify-center
             ">
                 <Image
                     className="object-cover"
@@ -38,6 +43,11 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
                     height={100}
                     style={{ borderRadius: '5px' }}
                 />
+                <div className="
+                    absolute
+                    ">
+                    <PlayButton />
+                </div>
             </div>
             <div className="
                 flex 

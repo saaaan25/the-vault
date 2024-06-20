@@ -38,7 +38,7 @@ const AddPlaylistButton = () => {
                 items-center
                 justify-center"
                 onClick={onClick}>
-                <p className="font-thin text-9xl text-custom-color-2 shadow-inner">+</p>
+                <p className="font-thin text-9xl text-custom-color-2">+</p>
             </button>
         </div>
     )

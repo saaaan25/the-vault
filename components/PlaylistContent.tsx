@@ -19,7 +19,7 @@ const PlaylistContent: React.FC<PlaylistContentProps> = ({ songs }) => {
     }
 
     return (
-        <div className="mr-2 flex flex-col">
+        <div className="mr-2 flex flex-col w-full">
             {songs.map((item) => (
                 <SongModel2 
                 key={item.id}

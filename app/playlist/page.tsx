@@ -1,15 +1,9 @@
-import getPlaylists from "@/actions/getPlaylists"
-import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
 import getSongs from "@/actions/getSongs"
-import AddPlaylistButton from "@/components/AddPlaylistButton"
 import Header from "@/components/Header"
-import LibraryContent from "@/components/LibraryContent"
-import UploadPlaylistModal from "@/components/UploadPlaylistModal"
+import PlaylistContent from "@/components/PlaylistContent"
 
-export const revalidate = 0
-
-export default async function Library() {
-    const userPlaylists = await getPlaylistsByUserId()
+const PlaylistPage = async() => {
+    const songs = await getSongs()
 
     return (
         <div className=" 
@@ -40,10 +34,11 @@ export default async function Library() {
                     </h1>
                 </div>
                 <div className="flex mt-6">
-                    <LibraryContent playlists={userPlaylists}/>
+                    <PlaylistContent songs={songs} />
                 </div>
             </div>
-            <UploadPlaylistModal/>
         </div>
     )
 }
+ 
+export default PlaylistPage

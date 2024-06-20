@@ -1,6 +1,7 @@
 import useLoadImageP from "@/hooks/useLoadImageP"
 import type { Playlist } from "@/types"
 import Image from 'next/image'
+import Link from "next/link"
 
 interface PlaylistItemProps {
     data: Playlist
@@ -11,7 +12,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
     const imagePath = useLoadImageP(data)
 
     return (
-        <div className="
+        <Link className="
             relative
             groups
             gap-x-5
@@ -26,7 +27,9 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
             p-3
             flex-col
             "
-            onClick={() => onClick(data.id)}>
+            onClick={() => onClick(data.id)}
+            href="/playlist">
+            
             <div className="
                 relative
                 bg-custom-color-3
@@ -53,7 +56,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
                 ">
                 <p>{data.name}</p>
             </div>
-        </div>
+        </Link>
     )
 }
  

@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "Biblioteca de música",
 }
 
+export const revalidate = 0
+
 export default function RootLayout({
     children,
 }: Readonly<{
