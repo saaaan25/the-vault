@@ -8,8 +8,6 @@ const PlaylistPage = async() => {
     const userSongs = await getSongsByUserId()
     const userPlaylists = await getPlaylistsByUserId()
 
-    const { playlists } = usePlaylist()
-
     return (
         <div className=" 
             bg-custom-color-2 
