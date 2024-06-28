@@ -2,6 +2,7 @@
 
 import LoginModal from "@/components/LoginModal"
 import UploadModal from "@/components/UploadModal"
+import UploadPlaylistModal from "@/components/UploadPlaylistModal"
 import { Children, useEffect, useState } from "react"
 
 const ModalProvider = () => {
@@ -19,6 +20,7 @@ const ModalProvider = () => {
         <>
             <LoginModal/>
             <UploadModal/>
+            <UploadPlaylistModal/>
         </>
     )
 }

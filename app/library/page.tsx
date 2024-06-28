@@ -1,7 +1,4 @@
-import getPlaylists from "@/actions/getPlaylists"
 import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
-import getSongs from "@/actions/getSongs"
-import AddPlaylistButton from "@/components/AddPlaylistButton"
 import Header from "@/components/Header"
 import LibraryContent from "@/components/LibraryContent"
 import UploadPlaylistModal from "@/components/UploadPlaylistModal"
