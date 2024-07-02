@@ -2,6 +2,7 @@ import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
 import Header from "@/components/Header"
 import LibraryContent from "@/app/library/components/LibraryContent"
 import UploadPlaylistModal from "@/components/UploadPlaylistModal"
+import SearchPlaylist from "@/components/SearchPlaylist"
 
 export const revalidate = 0
 
@@ -32,9 +33,13 @@ export default async function Library() {
                         text-black
                         text-2xl
                         font-bold
+                        mb-3
                         ">
                         Tu biblioteca
                     </h1>
+                    <div className="flex justify-end">
+                        <SearchPlaylist playlists={userPlaylists}/>
+                    </div>
                 </div>
                 <div className="flex mt-6">
                     <LibraryContent playlists={userPlaylists}/>
