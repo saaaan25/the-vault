@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 interface SongModel1Props {
     data: Song
-    onClick: (id: string) => void
+    onClick: (id: number) => void
 }
 
 const SongModel1:React.FC<SongModel1Props> = ({data, onClick}) => {

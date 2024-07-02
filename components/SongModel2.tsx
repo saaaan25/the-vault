@@ -1,15 +1,17 @@
-import { Song } from "@/types"
-import { FaEllipsisV } from "react-icons/fa"
+import { Playlist, Song } from "@/types"
 import Image from 'next/image'
 import useLoadImage from "@/hooks/useLoadImage"
 import PlayButton from "./PlayButton"
+import LikeButton from "./LikeButton"
+import SongButton from "./SongButton"
 
 interface SongModel2Props {
     data: Song
-    onClick: (id: string) => void
+    onClick: (id: number) => void
+    playlists: Playlist[]
 }
 
-const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
+const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] }) => {
     const imagePath = useLoadImage(data)
 
     return (
@@ -22,11 +24,11 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
             items-center
             rounded-lg
             justify-between
+            pr-3
             ">
             <div className="
                 ml-6
                 mr-4
-                border
                 rounded-xl
                 h-[58px]
                 w-[58px]
@@ -39,8 +41,8 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
                     className="object-cover"
                     src={imagePath || '/images/portadapredet.png'}
                     alt="Image"
-                    width={100}
-                    height={100}
+                    width={110}
+                    height={110}
                     style={{ borderRadius: '5px' }}
                 />
                 <div className="
@@ -50,37 +52,26 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick }) => {
                 </div>
             </div>
             <div className="
-                flex 
-                justify-between 
-                w-[85%]
+                flex  
+                w-[80%]
                 ">
                 <div className="flex-col">
                     <p className="font-bold">{data.title}</p>
                     <p className="text-sm">{data.autor}</p>
                 </div>
-                <div className="flex items-center">
-                    <p className="text-sm"></p>
-                </div>
-                <div className="flex items-center">
-                    <p className="text-sm"></p>
-                </div>
             </div>
             <div className="
-                w-[7%] 
+                w-[12%] 
                 flex 
                 justify-center
+                gap-x-3
                 ">
-                <button className="
-                    rounded-full
-                    hover:bg-custom-color-6
-                    h-[30px]
-                    w-[30px]
-                    flex
-                    items-center
-                    justify-center
-                    ">
-                    <FaEllipsisV size={20}/>
-                </button>
+                <div className="flex items-center">
+                    <LikeButton songId={data.id}/>
+                </div>
+                <div>
+                    <SongButton playlists={playlists} data={data}/>
+                </div>
             </div>
         </div>
     )

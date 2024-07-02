@@ -1,7 +1,7 @@
 import Stripe from "stripe"
 
 export interface Playlist {
-    id: string
+    id: number
     user_id: string
     name: string
     songs: string[]
@@ -9,7 +9,7 @@ export interface Playlist {
 }
 
 export interface Song {
-    id: string
+    id: number
     user_id: string
     autor: string
     title: string
@@ -18,7 +18,7 @@ export interface Song {
 }
 
 export interface Playlist {
-    id: string
+    playlistId: string
     name: string
     image_path: string
     songs: string[]

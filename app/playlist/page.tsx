@@ -1,9 +1,12 @@
-import getSongs from "@/actions/getSongs"
+import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
+import getSongsByUserId from "@/actions/getSongsByUserId"
 import Header from "@/components/Header"
 import PlaylistContent from "@/components/PlaylistContent"
+import { usePlaylist } from "@/providers/PlaylistProvider"
 
 const PlaylistPage = async() => {
-    const songs = await getSongs()
+    const userSongs = await getSongsByUserId()
+    const userPlaylists = await getPlaylistsByUserId()
 
     return (
         <div className=" 
@@ -34,7 +37,7 @@ const PlaylistPage = async() => {
                     </h1>
                 </div>
                 <div className="flex mt-6">
-                    <PlaylistContent songs={songs} />
+                    <PlaylistContent songs={userSongs} playlists={userPlaylists}/>
                 </div>
             </div>
         </div>

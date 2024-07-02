@@ -24,6 +24,7 @@ const LibraryContent: React.FC<LibraryContentProps> = ({ playlists }) => {
                 key={item.id}
                 onClick={() => {}}
                 data={item}
+                href="playlist"
                 />
             ))}
             <AddPlaylistButton/>

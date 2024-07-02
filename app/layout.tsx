@@ -6,6 +6,8 @@ import SupabaseProvider from "@/providers/SupabaseProvider"
 import UserProvider from "@/providers/UserProvider"
 import ModalProvider from "@/providers/ModalProvider"
 import ToasterProvider from "@/providers/ToasterProvider"
+import { useUser } from "@/hooks/useUser"
+import { PlaylistProvider } from "@/providers/PlaylistProvider"
 
 const font = Montserrat({ subsets: ["latin"] })
 
@@ -28,8 +30,10 @@ export default function RootLayout({
                 <ToasterProvider/>
                 <SupabaseProvider>
                     <UserProvider>
+                        <PlaylistProvider>
+                            <Sidebar>{children}</Sidebar>
+                        </PlaylistProvider>
                         <ModalProvider/>
-                        <Sidebar>{children}</Sidebar>
                     </UserProvider>
                 </SupabaseProvider>
             </body>

@@ -1,18 +1,27 @@
+import PlaylistPage from "@/app/playlist/page"
 import useLoadImageP from "@/hooks/useLoadImageP"
+import { usePlaylist } from "@/providers/PlaylistProvider"
 import type { Playlist } from "@/types"
 import Image from 'next/image'
-import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useMemo } from "react"
 
 interface PlaylistItemProps {
     data: Playlist
-    onClick: (id: string) => void
+    onClick: () => void
+    href: string
 }
 
-const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
+const PlaylistItem:React.FC<PlaylistItemProps> = ({data, href}) => {
     const imagePath = useLoadImageP(data)
+    const router = useRouter()
+    
+    const onClick = () => {
+        router.push(`/playlist`)
+    }
 
     return (
-        <Link className="
+        <button className="
             relative
             groups
             gap-x-5
@@ -27,8 +36,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
             p-3
             flex-col
             "
-            onClick={() => onClick(data.id)}
-            href="/playlist">
+            onClick={onClick}>
             
             <div className="
                 relative
@@ -56,7 +64,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data, onClick}) => {
                 ">
                 <p>{data.name}</p>
             </div>
-        </Link>
+        </button>
     )
 }
  

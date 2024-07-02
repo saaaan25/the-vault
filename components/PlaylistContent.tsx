@@ -1,15 +1,14 @@
 "use client"
 
-import type { Song } from "@/types"
-import PlaylistItem from "./Playlist"
-import AddPlaylistButton from "./AddPlaylistButton"
+import type { Playlist, Song } from "@/types"
 import SongModel2 from "./SongModel2"
 
 interface PlaylistContentProps {
     songs: Song[]
+    playlists: Playlist[]
 }
 
-const PlaylistContent: React.FC<PlaylistContentProps> = ({ songs }) => {
+const PlaylistContent: React.FC<PlaylistContentProps> = ({ songs, playlists = [] }) => {
     if (songs.length === 0) {
         return (
             <div>
@@ -25,6 +24,7 @@ const PlaylistContent: React.FC<PlaylistContentProps> = ({ songs }) => {
                 key={item.id}
                 onClick={() => {}}
                 data={item}
+                playlists={playlists}
                 />
             ))}
         </div>

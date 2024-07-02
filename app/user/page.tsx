@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import ArtistModel from "@/components/ArtistModel";
 import SongModelLiked from "@/components/SongModelLiked";
 import UserInfo from "@/components/UserInfo";
 import getLikedSongs from "@/actions/getLikedSongs";
@@ -60,16 +59,11 @@ const User = async () => {
           </div>
           <div
             className="
-                    bg-custom-color-3 rounded-lg p-6 w-[720px]
+                    bg-custom-color-6 rounded-lg p-6 w-[720px]
                     "
           >
             <h2 className="text-2xl font-bold mb-4">Canciones favoritas</h2>
             <LikedContent songs={songs} />
-            <div className="flex gap-4 overflow-x-auto">
-              <SongModelLiked song="Cancion 1" path="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"/>
-              <SongModelLiked song="Cancion 2" path="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"/>
-              <SongModelLiked song="Cancion 3" path="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"/>
-            </div>
           </div>
         </div>
       </div>

@@ -1,81 +1,84 @@
 "use client"
-import { useSessionContext } from "@supabase/auth-helpers-react";
-import { useRouter } from "next/navigation";
-import useAuth from "@/hooks/useAuth";
-import { useUser } from "@/hooks/useUser";
-import { useEffect, useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { toast } from "react-hot-toast";
+
+import useAuth from "@/hooks/useAuth"
+import { useUser } from "@/hooks/useUser"
+import { useSessionContext } from "@supabase/auth-helpers-react"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import toast from "react-hot-toast"
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
+
 interface LikeButtonProps {
-    songId: string;
-};
+    songId: number
+}
 
-const LikeButton = React.FC<LikeButtonProps> = ({ songId }) => {
-    const router = useRouter();
-    const { supabaseClient} = useSessionContext();
+const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
+    const router = useRouter()
+    const { supabaseClient } = useSessionContext()
+    const authModal = useAuth()
+    const { user } = useUser()
 
-    const authModal = useAuth();
-    const { user } = useUser();
+    const [isLiked, setIsLiked] = useState(false)
 
-    const [isLiked, setIsLiked] = useState(false);
     useEffect(() => {
         if (!user?.id) {
-            return;
-            // check if the user has liked the song
+            return
         }
+
         const fetchData = async () => {
-            const { data, error } = await supabaseClient.
-            from("likes")
-            .select("*")
-            .eq("song_id", songId)
-            .eq("user_id", user.id)
-            .single();
+            const { data, error } = await supabaseClient.from('liked_songs').select('*')
+            .eq('user_id', user.id).eq('song_id', songId).single()
+
             if (!error && data) {
-                setIsLiked(true);
+                setIsLiked(true)
             }
         }
-        fetchData();
-    }, [songId, supabaseClient, user?.id]);
 
-    const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
+        fetchData()
+    }, [songId, supabaseClient, user?.id])
 
-    const handleLike = async () => {
-        if (!user?.id) {
-            return authModal.onOpen();
+    const Icon = isLiked ? AiFillHeart : AiOutlineHeart
+
+    const handleLike = async() => {
+        if (!user) {
+            return authModal.onOpen()
         }
+
         if (isLiked) {
-            // unlike the song
-            const { error } = await supabaseClient
-            .from('liked_songs')
-            .delete()
-            .eq('user_id', user.id)
-            .eq('song_id', songId);
-        if (error) {
-            toast.error(error.message);
-        } else {
-            const { error } = await supabaseClient.
-            from('liked_songs')
-            .insert({
-                song_id: songId,
-                user_id: user.id
-            });
+            const { error } = await supabaseClient.from('liked_songs').delete()
+            .eq('user_id', user.id).eq('song_id', songId)
 
             if (error) {
-                toast.error(error.message);
+                toast.error(error.message)
             } else {
-                setIsLiked(true);
-                toast.success('Cancion añadida a favoritos');
+                setIsLiked(false)
+                toast.success('Eliminada de favoritos')
+            }
+        } else {
+            const { error } = await supabaseClient.from('liked_songs').insert({
+                song_id: songId,
+                user_id: user.id
+            })
+
+            if (error) {
+                toast.error(error.message)
+            } else {
+                setIsLiked(true)
+                toast.success('Agregada a favoritos')
+            }
         }
+        router.refresh()
     }
-    router.refresh();
-    };
 
     return (
-        <button onClick ={handleLike} className="hover:placeholder-opacity-75 transition">
-            <Icon color="isLiked ? 'custom-color' : 'custom-color-2'" size={25}/>
+        <button
+        onClick={handleLike}
+        className="hover:opacity-75"
+        >
+            <Icon
+            color={isLiked ? '#000000' : '#000000'} size={25}/>
         </button>
-    );
-    }
+    )
 }
-export default LikeButton;
-
+ 
+export default LikeButton
