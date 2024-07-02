@@ -1,4 +1,5 @@
-import PlaylistPage from "@/app/playlist/page"
+"use client"
+
 import useLoadImageP from "@/hooks/useLoadImageP"
 import { usePlaylist } from "@/providers/PlaylistProvider"
 import type { Playlist } from "@/types"
@@ -8,33 +9,32 @@ import { useMemo } from "react"
 
 interface PlaylistItemProps {
     data: Playlist
-    onClick: () => void
-    href: string
 }
 
-const PlaylistItem:React.FC<PlaylistItemProps> = ({data, href}) => {
+const PlaylistItem:React.FC<PlaylistItemProps> = ({data}) => {
     const imagePath = useLoadImageP(data)
     const router = useRouter()
     
     const onClick = () => {
-        router.push(`/playlist`)
+        router.push(`/playlist/${data.id}`) //${data.name}
     }
 
     return (
         <button className="
-            relative
-            groups
-            gap-x-5
-            rounded-lg
-            bg-custom-color-5
-            hover:bg-custom-color-3
-            flex
-            justify-center
-            items-center
-            mr-4
-            mb-2
-            p-3
-            flex-col
+                relative
+                group
+                flex
+                flex-col
+                items-center
+                justify-center
+                mr-5
+                rounded-md
+                gap-x-4
+                bg-custom-color-3
+                cursor-pointer
+                hover:bg-custom-color-3
+                transition
+                p-3
             "
             onClick={onClick}>
             

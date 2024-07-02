@@ -1,6 +1,11 @@
+import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
+import getSongsByUserId from "@/actions/getSongsByUserId"
 import Header from "@/components/Header"
+import PlaylistContent from "@/app/playlist/components/PlaylistContent"
 
-const User = () => {
+const User = async() => {
+    const userSongs = await getSongsByUserId()
+    const userPlaylists = await getPlaylistsByUserId()
     return (
         <div className=" 
             bg-custom-color-2 
@@ -26,6 +31,7 @@ const User = () => {
                         Tu biblioteca
                     </h1>
                 </div>
+                <PlaylistContent playlists={userPlaylists} songs={userSongs}/>
             </div>
         </div>
     )

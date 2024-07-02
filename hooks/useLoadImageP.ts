@@ -1,7 +1,7 @@
 import { Playlist } from "@/types"
 import { SupabaseClient, useSupabaseClient } from "@supabase/auth-helpers-react"
 
-const useLoadImageP = (playlist : Playlist) => {
+const useLoadImageP = (playlist : Playlist | null) => {
     const supabaseClient = useSupabaseClient()
 
     if(!playlist) {

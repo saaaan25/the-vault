@@ -1,6 +1,6 @@
 import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
 import Header from "@/components/Header"
-import LibraryContent from "@/components/LibraryContent"
+import LibraryContent from "@/app/library/components/LibraryContent"
 import UploadPlaylistModal from "@/components/UploadPlaylistModal"
 
 export const revalidate = 0
