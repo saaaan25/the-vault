@@ -1,12 +1,13 @@
 import Header from "@/components/Header";
-import SongModelLiked from "@/components/SongModelLiked";
 import UserInfo from "@/components/UserInfo";
 import getLikedSongs from "@/actions/getLikedSongs";
+import getRecentSongs from "@/actions/getRecentSongs";
 import LikedContent from "./components/LikedContent";
+import RecentContent from "./components/RecentContent";
 export const revalidate = 0;
 const User = async () => {
   const songs = await getLikedSongs();
-
+  const recent = await getRecentSongs();
   return (
     <div
       className=" 
@@ -52,10 +53,7 @@ const User = async () => {
             <h2 className="text-2xl font-bold mb-4">
               Historial de reproduccion
             </h2>
-            <div className="flex gap-4 overflow-x-auto">
-              
-
-            </div>
+            <RecentContent songs={recent} />
           </div>
           <div
             className="
