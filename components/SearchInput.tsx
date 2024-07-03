@@ -25,7 +25,7 @@ const SearchInput = () => {
 
    return (
       <Input
-         className="border-transparent"
+         className="border-transparent bg-custom-color-3"
          placeholder="Qué quieres escuchar?"
          value={value}
          onChange={(e) => setValue(e.target.value)}

@@ -27,11 +27,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const player = usePlayer()
     const [volume, setVolume] = useState(1)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [duration, setDuration] = useState(0) 
-    const [position, setPosition] = useState(0)
 
     const router = useRouter()
-    const audioRef = useRef<HTMLAudioElement | null>(null)
 
     const openQueue = () => {
         router.push('/queue')
@@ -89,38 +86,11 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         }
     }, [sound])
 
-    useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.play()
-            setDuration(audioRef.current.duration)
-        }
-
-        return () => {
-            if (audioRef.current) {
-                audioRef.current.pause()
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                audioRef.current.currentTime = 0
-            }
-        }
-    }, [])
-    
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (audioRef.current && isPlaying) {
-                setPosition(audioRef.current.currentTime)
-            }
-        }, 1000)
-
-        return () => clearInterval(interval)
-    }, [isPlaying])
-
     const handlePlay = () => {
         if (!isPlaying) {
             play()
-            audioRef.current?.play()
         } else {
             pause()
-            audioRef.current?.pause()
         }
     }
 
@@ -129,13 +99,6 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             setVolume(1)
         } else {
             setVolume(0)
-        }
-    }
-
-    const handlePositionChange = (value: number) => {
-        setPosition(value)
-        if (audioRef.current) {
-            audioRef.current.currentTime = value
         }
     }
 
@@ -211,14 +174,6 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     </div>
                 </div>
                 <div>
-                    <Slider 
-                        value={position}
-                        onChange={handlePositionChange}
-                        max={duration}
-                        step={1}
-                        ariaLabel="Song position"
-                        showThumb={true}/>
-                    <audio ref={audioRef} src={songUrl} />
                 </div> 
             </div>
             <div className="flex justify-end gap-x-3 pr-5 items-center w-full">
