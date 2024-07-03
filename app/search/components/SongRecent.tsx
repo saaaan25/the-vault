@@ -1,6 +1,6 @@
 "use client";
 
-import { Queue } from "@/Structures/queue";
+import { Queue } from "@/structures/queue";
 import SongModel1 from "@/components/SongModel1";
 import { Song } from "@/types";
 import { useState } from "react";

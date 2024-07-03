@@ -17,6 +17,7 @@ import logUserActivity from "@/actions/logUserActivity"
 import { useUser } from "@/hooks/useUser"
 import { useSessionContext } from "@supabase/auth-helpers-react"
 import { log } from "console"
+import {useQueue} from "@/hooks/useQueue"
 interface PlayerContentProps {
     song: Song
     songUrl: string
@@ -32,6 +33,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const player = usePlayer()
     const [volume, setVolume] = useState(1)
     const [isPlaying, setIsPlaying] = useState(false)
+    const { removeFromQueue } = useQueue()
 
     const router = useRouter()
 
@@ -78,6 +80,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         onend: () => {
             setIsPlaying(false)
             onPlayNext()
+            removeFromQueue()
             if (user) {
                 logUserActivity(supabaseClient, user.id, song.id)
             }

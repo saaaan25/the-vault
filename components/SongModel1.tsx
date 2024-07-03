@@ -18,12 +18,14 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
     const { user } = useUser();
     const { supabaseClient } = useSessionContext();
     const handleClick = async (id: number) => {
+        if (user) {
+            await logUserActivity(supabaseClient, user.id, id);
+        }
         onClick(id);
     };
 
     return (
         <div
-            onClick={() => handleClick(data.id)}
             className="	
                 relative
                 group
@@ -85,7 +87,7 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
                 absolute
                 bottom-20
                 right-5">
-                <PlayButton />
+                <PlayButton onClick={() => handleClick(data.id)} data={data} />
             </div>
         </div>
     )
