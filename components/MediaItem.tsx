@@ -7,7 +7,7 @@ import PlayButton from "./PlayButton";
 
 interface MediaItemProps {
    data: Song;
-   onClick?: (id: number) => void;
+   onClick: (id: number) => void;
 }
 const MediaItem: React.FC<MediaItemProps> = ({ data, onClick}) => {
    const imageUrl = useLoadImage(data);
@@ -30,7 +30,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick}) => {
                className="object-cover"
             />
             <div className="absolute pl-1 pt-1">
-               <PlayButton />
+               <PlayButton onClick = {() => onClick(data.id)} data={data}/>
             </div>
          </div>
          <div className="flex flex-col gap-y-1 overflow-hidden">
