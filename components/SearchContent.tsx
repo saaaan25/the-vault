@@ -2,6 +2,7 @@
 
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
+import SongModel1 from "./SongModel1";
 
 interface SearchContentProps {
    songs: Song[]
