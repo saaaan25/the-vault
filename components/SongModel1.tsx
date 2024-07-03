@@ -26,7 +26,6 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
 
     return (
         <div
-            onClick={() => handleClick(data.id)}
             className="	
                 relative
                 group

@@ -1,6 +1,5 @@
 "use client"
 import Header from "@/components/Header";
-import { Queue } from "@/structures/queue";
 import { Song, Playlist } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
