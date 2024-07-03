@@ -18,9 +18,6 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
     const { user } = useUser();
     const { supabaseClient } = useSessionContext();
     const handleClick = async (id: number) => {
-        if (user) {
-            await logUserActivity(supabaseClient, user.id, id);
-        }
         onClick(id);
     };
 
