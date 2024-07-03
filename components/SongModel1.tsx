@@ -3,19 +3,31 @@ import { Playlist, Song } from "@/types"
 import Image from 'next/image'
 import PlayButton from "./PlayButton"
 import SongButton from "./SongButton"
-
+import logUserActivity  from "@/actions/logUserActivity";
+import { useUser } from "@/hooks/useUser";
+import { useSessionContext } from "@supabase/auth-helpers-react";
 interface SongModel1Props {
     data: Song
     onClick: (id: number) => void
     playlists: Playlist[]
+    small: boolean | null
 }
 
-const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists}) => {
+const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small}) => {
     const imagePath = useLoadImage(data)
+    const { user } = useUser();
+    const { supabaseClient } = useSessionContext();
+    const handleClick = async (id: number) => {
+        if (user) {
+            await logUserActivity(supabaseClient, user.id, id);
+        }
+        onClick(id);
+    };
+
     return (
         <div
-            onClick={() => onClick(data.id)}
-            className="
+            onClick={() => handleClick(data.id)}
+            className="	
                 relative
                 group
                 flex
@@ -32,6 +44,7 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists}) => {
                 transition
                 p-3
             "
+            {...(small && {style: {width: '150px'}})}
         >
             <div
                 className="
@@ -75,7 +88,7 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists}) => {
                 absolute
                 bottom-20
                 right-5">
-                <PlayButton />
+                <PlayButton onClick={() => onClick(data.id)} data={data}/>
             </div>
         </div>
     )

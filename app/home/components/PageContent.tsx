@@ -41,6 +41,7 @@ const PageContent: React.FC<PageContentProps> = ({
                     onClick={(id: number) => onPlay(id)}
                     data={item}
                     playlists={playlists}
+                    small={false}
                 />
             ))}
         </div>
