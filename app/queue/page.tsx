@@ -1,10 +1,34 @@
 "use client"
-import Header from "@/components/Header"
-import { useRouter } from "next/navigation"
-import { IoMdClose } from "react-icons/io"
+import Header from "@/components/Header";
+import { Queue } from "@/structures/queue";
+import { Song, Playlist } from "@/types";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import QueueContent from "./components/QueueContent";
+import { useQueue } from "@/hooks/useQueue";
 
 const QueuePage = () => {
     const router = useRouter()
+    const [playlists, setPlaylists] = useState<Playlist[]>([]);
+    const { queue, removeFromQueue, clearQueue } = useQueue()
+
+    useEffect(() => {
+        const fetchPlaylists = async () => {
+            try {
+                const response = await fetch('/api/playlist');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setPlaylists(data);
+            } catch (error) {
+                console.error('Failed to fetch playlist:', error);
+            }
+        }
+
+        fetchPlaylists();
+        
+    }, []);
 
     return (
         <div className=" 
@@ -31,18 +55,13 @@ const QueuePage = () => {
                         ">
                         Fila de reproducción
                     </h1>
-                    <div>
-                        <button onClick={() => router.back()}>
-                            <IoMdClose />
-                        </button>
-                    </div>
                 </div>
                 <div className="flex mt-6">
-                    ola
+                    <QueueContent list={queue.getItems()} playlists={playlists} />
                 </div>
             </div>
         </div>
-    )
-}
- 
-export default QueuePage
+    );
+};
+
+export default QueuePage;

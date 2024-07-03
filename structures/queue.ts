@@ -1,7 +1,8 @@
+// src/utils/Queue.ts
 export class Queue<T> {
     private items: T[] = [];
 
-    enqueue(item: T) {
+    enqueue(item: T): void {
         this.items.push(item);
     }
 
@@ -17,11 +18,11 @@ export class Queue<T> {
         return this.items.length === 0;
     }
 
-    size(): number {
-        return this.items.length;
-    }
-
     getItems(): T[] {
         return [...this.items];
+    }
+
+    clear(): void {
+        this.items = [];
     }
 }

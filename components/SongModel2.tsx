@@ -25,8 +25,7 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
             rounded-lg
             justify-between
             pr-3
-            "
-            onClick={() => onClick(data.id)}>
+            ">
             <div className="
                 ml-6
                 mr-4
@@ -49,7 +48,7 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
                 <div className="
                     absolute
                     ">
-                    <PlayButton />
+                    <PlayButton onClick={() => onClick(data.id)} data={data} />
                 </div>
             </div>
             <div className="
