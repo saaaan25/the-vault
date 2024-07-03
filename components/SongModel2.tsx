@@ -48,7 +48,7 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
                     absolute
                     hover:group-[opacity-100]:
                     ">
-                    <PlayButton />
+                    <PlayButton onClick={() => onClick(data.id)} data={data} />
                 </div>
             </div>
             <div className="

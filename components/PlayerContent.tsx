@@ -13,6 +13,7 @@ import Slider from "./Slider"
 import usePlayer from "@/hooks/usePlayer"
 import { useEffect, useRef, useState } from "react"
 import useSound from "use-sound"
+import { useQueue } from "@/hooks/useQueue"
 
 interface PlayerContentProps {
     song: Song
@@ -27,6 +28,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const player = usePlayer()
     const [volume, setVolume] = useState(1)
     const [isPlaying, setIsPlaying] = useState(false)
+    const { removeFromQueue } = useQueue()
 
     const router = useRouter()
 
@@ -73,6 +75,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         onend: () => {
             setIsPlaying(false)
             onPlayNext()
+            removeFromQueue()
         },
         onpause: () => setIsPlaying(false),
         format: ['mp3']

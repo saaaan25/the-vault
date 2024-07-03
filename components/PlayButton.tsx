@@ -1,6 +1,12 @@
+import { Song } from "@/types"
 import { FaPlay } from "react-icons/fa"
 
-const PlayButton = () => {
+interface PlayButtonProps {
+    onClick: (id: number) => void
+    data: Song
+}
+
+const PlayButton: React.FC<PlayButtonProps> = ({onClick, data}) => {
     return (
         <button className="
             transition
@@ -13,7 +19,8 @@ const PlayButton = () => {
             justify-center
             bg-black
             p-3
-            ">
+            "
+            onClick={() => onClick(data.id)}>
             <FaPlay className="text-custom-color-2"/>
         </button>
     )

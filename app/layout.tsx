@@ -8,6 +8,7 @@ import ModalProvider from "@/providers/ModalProvider"
 import ToasterProvider from "@/providers/ToasterProvider"
 import { PlaylistProvider } from "@/providers/PlaylistProvider"
 import Player from "@/components/Player"
+import { QueueProvider } from "@/hooks/useQueue"
 
 const font = Montserrat({ subsets: ["latin"] })
 
@@ -31,8 +32,10 @@ export default function RootLayout({
                 <SupabaseProvider>
                     <UserProvider>
                         <PlaylistProvider>
-                            <Sidebar>{children}</Sidebar>
-                            <Player/>
+                            <QueueProvider>
+                                <Sidebar>{children}</Sidebar>
+                                <Player/>
+                            </QueueProvider>
                         </PlaylistProvider>
                         <ModalProvider/>
                     </UserProvider>
