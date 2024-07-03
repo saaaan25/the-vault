@@ -12,6 +12,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({onClick, data}) => {
             transition
             opacity-0
             hover:opacity-100
+            group-hover:opacity-100
             rounded-full
             flex
             items-center
