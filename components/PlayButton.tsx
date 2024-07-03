@@ -6,6 +6,7 @@ const PlayButton = () => {
             transition
             opacity-0
             hover:opacity-100
+            group-hover:opacity-100
             rounded-full
             flex
             items-center
