@@ -1,8 +1,8 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Queue } from '@/structures/queue';
 import { Song } from '@/types';
+import { Queue } from '@/structures/queue';
 
 interface QueueContextType {
     queue: Queue<Song>;
