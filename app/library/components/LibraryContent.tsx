@@ -1,8 +1,8 @@
 "use client"
 
 import type { Playlist } from "@/types"
-import PlaylistItem from "./Playlist"
-import AddPlaylistButton from "./AddPlaylistButton"
+import PlaylistItem from "../../../components/Playlist"
+import AddPlaylistButton from "../../../components/AddPlaylistButton"
 
 interface LibraryContentProps {
     playlists: Playlist[]
@@ -18,13 +18,19 @@ const LibraryContent: React.FC<LibraryContentProps> = ({ playlists }) => {
     }
 
     return (
-        <div className="mr-2 flex">
+        <div className="mr-2
+                        grid
+                        grid-cols-2
+                        sm:grid-cols-3
+                        md:grid-cols-3
+                        lg:grid-cols-4
+                        xl:grid-cols-5
+                        2xl:grid-cols-8
+                        gap-2">
             {playlists.map((item) => (
                 <PlaylistItem 
                 key={item.id}
-                onClick={() => {}}
                 data={item}
-                href="playlist"
                 />
             ))}
             <AddPlaylistButton/>

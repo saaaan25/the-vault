@@ -1,11 +1,16 @@
 import Header from "@/components/Header";
-import UserInfo from "@/components/UserInfo";
 import getLikedSongs from "@/actions/getLikedSongs";
 import getRecentSongs from "@/actions/getRecentSongs";
 import LikedContent from "./components/LikedContent";
 import RecentContent from "./components/RecentContent";
+import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
+import getSongsByUserId from "@/actions/getSongsByUserId"
+import PlaylistContent from "@/app/playlist/components/PlaylistContent"
 export const revalidate = 0;
+
 const User = async () => {
+  const userSongs = await getSongsByUserId()
+  const userPlaylists = await getPlaylistsByUserId()
   const songs = await getLikedSongs();
   const recent = await getRecentSongs();
   return (
@@ -22,9 +27,10 @@ const User = async () => {
       <Header>
         <></>
       </Header>
-      <div className="mb-2 ml-14 h-auto grid grid-cols-[0.8fr_1fr] gap-32 container">
+      <div className="mb-2 ml-14 mr-4 h-auto grid grid-cols-[1fr_1fr] gap-32 container">
+        {/* Espacio pa joar */}
         <div className="w-full text-center">
-          <div className="flex justify-between items-center">
+
             <h1
               className="
                         text-black
@@ -33,35 +39,28 @@ const User = async () => {
                         "
             >
               Perfil
-            </h1>
-          </div>
-          <UserInfo
-            name="Nombre de usuario"
-            avatar="https://randomuser.me/api/portraits"
-            description="Descripcion de usuario"
-          />
-          <button className="bg-custom-color px-4 py-2 rounded-lg text-3xl mt-4 w-full">
-            Personalizar tema
-          </button>
+            </h1>          
+
         </div>
-        <div className="w-full mt-16">
+        {/* A partir de aquí ya es el div de las canciones */}
+        <div className="w-full">
           <div
             className="
-                    bg-custom-color-3 rounded-lg p-6 w-[720px] mb-10
+                    bg-custom-color-3 rounded-lg px-6 pt-4 pb-2 w-[700px] mb-6
                     "
           >
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="text-2xl font-bold mb-2">
               Historial de reproduccion
             </h2>
-            <RecentContent songs={recent} />
+            <RecentContent songs={recent} playlists={userPlaylists} />
           </div>
           <div
             className="
-                    bg-custom-color-6 rounded-lg p-6 w-[720px]
+                    bg-custom-color-3 rounded-lg px-6 pt-4 pb-2 w-[700px]
                     "
           >
             <h2 className="text-2xl font-bold mb-4">Canciones favoritas</h2>
-            <LikedContent songs={songs} />
+            <LikedContent songs={songs} playlists={userPlaylists}/>
           </div>
         </div>
       </div>

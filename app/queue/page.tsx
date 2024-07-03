@@ -1,12 +1,10 @@
-import getPlaylistsByUserId from "@/actions/getPlaylistsByUserId"
-import getSongsByUserId from "@/actions/getSongsByUserId"
+"use client"
 import Header from "@/components/Header"
-import PlaylistContent from "@/components/PlaylistContent"
-import { usePlaylist } from "@/providers/PlaylistProvider"
+import { useRouter } from "next/navigation"
+import { IoMdClose } from "react-icons/io"
 
-const PlaylistPage = async() => {
-    const userSongs = await getSongsByUserId()
-    const userPlaylists = await getPlaylistsByUserId()
+const QueuePage = () => {
+    const router = useRouter()
 
     return (
         <div className=" 
@@ -16,8 +14,6 @@ const PlaylistPage = async() => {
             w-full 
             overflow-hidden 
             overflow-y-auto
-            flex
-            flex-col
             ">
             <Header>
                 <></>
@@ -33,15 +29,20 @@ const PlaylistPage = async() => {
                         text-2xl
                         font-bold
                         ">
-                        Tu biblioteca
+                        Fila de reproducción
                     </h1>
+                    <div>
+                        <button onClick={() => router.back()}>
+                            <IoMdClose />
+                        </button>
+                    </div>
                 </div>
                 <div className="flex mt-6">
-                    <PlaylistContent songs={userSongs} playlists={userPlaylists}/>
+                    ola
                 </div>
             </div>
         </div>
     )
 }
  
-export default PlaylistPage
+export default QueuePage

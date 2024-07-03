@@ -2,15 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-
-import { Song } from "@/types";
+import useOnPlay from "@/hooks/useOnPlay";
+import { Playlist, Song } from "@/types";
 import { useUser } from "@/hooks/useUser";
-import SongModel2 from "@/components/SongModel2";
+import SongModel1 from "@/components/SongModel1";
 
 interface LikedContentProps {
     songs: Song[];
+    playlists: Playlist[]
 }
-const LikedContent: React.FC<LikedContentProps> = ({ songs }) => {
+const LikedContent: React.FC<LikedContentProps> = ({ songs, playlists }) => {
+    const onPlay = useOnPlay(songs)
     const router = useRouter();
     const {isLoading, user} = useUser();
 
@@ -28,12 +30,15 @@ const LikedContent: React.FC<LikedContentProps> = ({ songs }) => {
         )
     }
   return (
-    <div className="flex flex-col gap-2 h-56 overflow-y-auto px-2 ">
+    <div className="flex gap-2 h-46 overflow-x-auto pr-1 pb-1 ">
         {songs.map((song) => ( 
             <div key={song.id} className="">
-                <SongModel2
-                    onClick={() => {}}
+                <SongModel1
+                    key={song.id}
+                    onClick={(id: number) => onPlay(id)}
                     data={song}
+                    playlists={playlists}
+                    small={true}
                 />
             </div>
         ))}

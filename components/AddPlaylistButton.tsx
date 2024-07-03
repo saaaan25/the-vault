@@ -18,13 +18,12 @@ const AddPlaylistButton = () => {
     }
     return (
         <div className="
-                h-[230px] 
-                w-[207px] 
+                h-[210px] 
+                w-[189px] 
                 rounded-lg
                 bg-custom-color-2
                 flex
                 justify-center
-                ml-5
                 ">
             <button className="
                 bg-custom-color-3

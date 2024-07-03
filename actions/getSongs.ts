@@ -13,7 +13,7 @@ const getSongs = async (): Promise<Song[]> => {
     if (error) {
         console.log(error)
     }
-
+    
     return (data as any) || []
 }
 

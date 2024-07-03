@@ -4,7 +4,6 @@ import useLoadImage from "@/hooks/useLoadImage"
 import PlayButton from "./PlayButton"
 import LikeButton from "./LikeButton"
 import SongButton from "./SongButton"
-
 interface SongModel2Props {
     data: Song
     onClick: (id: number) => void
