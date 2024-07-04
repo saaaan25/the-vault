@@ -9,39 +9,13 @@ export function busquedaBinaria(arr: Playlist[], palabra: string): number | null
         const comparacion = arr[medio].name.localeCompare(palabra);
 
         if (comparacion === 0) {
-            return arr[medio].id; // Palabra encontrada, devuelve el id
+            return arr[medio].id; 
         } else if (comparacion < 0) {
-            izquierda = medio + 1; // Buscar en la mitad derecha
+            izquierda = medio + 1; 
         } else {
-            derecha = medio - 1; // Buscar en la mitad izquierda
+            derecha = medio - 1; 
         }
     }
 
-    return null; // Palabra no encontrada
+    return null; 
 }
-
-/*
-// Ejemplo de uso:
-const playlists: Playlist[] = [
-    { name: "Banana" },
-    { name: "Apple" },
-    { name: "Date" },
-    { name: "Fig" },
-    { name: "Cherry" },
-    { name: "Grape" }
-];
-
-const palabraABuscar = "Cherry";
-
-// Ordenar el arreglo
-const playlistsOrdenadas = ordenarPorTitulo(playlists);
-
-// Realizar la búsqueda binaria
-const indice = busquedaBinaria(playlistsOrdenadas, palabraABuscar);
-
-if (indice !== null) {
-    console.log(`Palabra encontrada en el índice: ${indice}`);
-} else {
-    console.log("Palabra no encontrada");
-}
-*/
