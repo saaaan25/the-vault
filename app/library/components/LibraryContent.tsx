@@ -3,6 +3,7 @@
 import type { Playlist } from "@/types"
 import PlaylistItem from "../../../components/Playlist"
 import AddPlaylistButton from "../../../components/AddPlaylistButton"
+import LoadingPage from "@/components/LoadingPage"
 
 interface LibraryContentProps {
     playlists: Playlist[]
@@ -11,8 +12,8 @@ interface LibraryContentProps {
 const LibraryContent: React.FC<LibraryContentProps> = ({ playlists }) => {
     if (playlists.length === 0) {
         return (
-            <div>
-                No hay playlist
+            <div className="mt-4 h-full w-full text-black flex items-center justify-center">
+                <LoadingPage/>
             </div>
         )
     }

@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingPage from "@/components/LoadingPage";
 import SongModel1 from "@/components/SongModel1";
 import useOnPlay from "@/hooks/useOnPlay";
 import { Playlist, Song } from "@/types";
@@ -17,8 +18,8 @@ const PageContent: React.FC<PageContentProps> = ({
 
     if (songs.length === 0) {
         return (
-            <div className="mt-4 text-black">
-                No has agregado ninguna canción...
+            <div className="mt-4 h-full w-full text-black flex items-center justify-center">
+                <LoadingPage/>
             </div>
         )
     }
