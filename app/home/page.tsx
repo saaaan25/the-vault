@@ -8,6 +8,8 @@ import { useUser } from "@/hooks/useUser"
 import PageContent from './components/PageContent'
 import { GoPlus } from 'react-icons/go';
 import { Playlist } from '@/types';
+import { MdLibraryAdd } from 'react-icons/md';
+import useCSVUpload from '@/hooks/useCSVModal';
 
 interface Song {
     id: number;
@@ -24,6 +26,7 @@ export default function Home() {
   const authModal = useAuth()
   const { user, accessToken, isLoading } = useUser()
   const uploadModal = useUpload()
+  const uploadCSVModal = useCSVUpload()
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -74,6 +77,14 @@ export default function Home() {
 
     return uploadModal.onOpen()
   }
+
+  const openModal = () => {
+    if (!user) {
+      return authModal.onOpen()
+    }
+
+    return uploadCSVModal.onOpen()
+  }
   
   return (
     <div className="bg-custom-color-2 text-black h-full w-full overflow-hidden overflow-y-auto">
@@ -82,15 +93,25 @@ export default function Home() {
       </Header>
       <div className="mb-2 ml-14 flex justify-between items-center">
         <h1 className="text-black text-2xl font-bold">Recientes</h1>
-        <button
-          className="bg-custom-color-6 cursor-pointer
-                    hover:bg-custom-color-3
-                    transition
-                    border rounded-xl border-custom-color-3 h-fit w-fit p-3 mt-3 mr-5 flex items-center justify-center"
-          onClick={onClick}
-        >
-          <GoPlus/>
-        </button>
+        <div className='flex mt-3 mr-5 gap-x-2'>
+          <button
+            className="bg-custom-color-6 cursor-pointer
+                      hover:bg-custom-color-3
+                      transition
+                      border rounded-xl border-custom-color-3 h-fit w-fit p-3 flex items-center justify-center"
+            onClick={onClick}
+          >
+            <GoPlus/>
+          </button>
+          <button className="bg-custom-color-6 cursor-pointer
+                      hover:bg-custom-color-3
+                      transition
+                      border rounded-xl border-custom-color-3 h-fit w-fit p-3 flex items-center justify-center"
+            onClick={openModal}>
+            <MdLibraryAdd/>
+          </button>
+        </div>
+        
       </div>
       <div className="ml-14 mb-2">
       

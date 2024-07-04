@@ -1,6 +1,7 @@
 "use client"
 
 import LoginModal from "@/components/LoginModal"
+import UploadCSVModal from "@/components/UploadCSVModal"
 import UploadModal from "@/components/UploadModal"
 import UploadPlaylistModal from "@/components/UploadPlaylistModal"
 import { Children, useEffect, useState } from "react"
@@ -21,6 +22,7 @@ const ModalProvider = () => {
             <LoginModal/>
             <UploadModal/>
             <UploadPlaylistModal/>
+            <UploadCSVModal/>
         </>
     )
 }
