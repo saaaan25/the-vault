@@ -169,6 +169,7 @@ export const MyUserContextProvider = (props: Props) => {
       setTheme("bg-palette1-custom-color");
     }
     fetchUserDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isLoadingUser]);
 
   const value = {
