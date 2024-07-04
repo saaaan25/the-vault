@@ -8,7 +8,7 @@ interface QueueContentProps {
 }
 
 const QueueContent: React.FC<QueueContentProps> = ({ list, playlists }) => {
-    const onPlay = useOnPlay(list);
+    const onPlay = useOnPlay(list)
 
     return (
         <div className="w-full">

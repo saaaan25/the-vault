@@ -5,6 +5,7 @@ import SongModel2 from "../../../components/SongModel2"
 import useOnPlay from "@/hooks/useOnPlay"
 import { useEffect, useState } from "react"
 import { useUser } from "@/hooks/useUser"
+import LoadingPage from "@/components/LoadingPage"
 
 interface PlaylistContentProps {
     songsName: string[] | undefined
@@ -37,8 +38,8 @@ const PlaylistContent: React.FC<PlaylistContentProps> = ({ songsName, playlists 
 
     if (songsInPlaylist.length === 0) {
         return (
-            <div>
-                No hay canciones
+            <div className="mt-4 h-full w-full text-black flex items-center justify-center">
+                <LoadingPage/>
             </div>
         )
     }

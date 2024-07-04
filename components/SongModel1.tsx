@@ -87,7 +87,7 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
                 absolute
                 bottom-20
                 right-5">
-                <PlayButton onClick={() => handleClick(data.id)} data={data} />
+                <PlayButton onClick={handleClick} data={data}/>
             </div>
         </div>
     )
