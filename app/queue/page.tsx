@@ -26,7 +26,7 @@ const QueuePage = () => {
         }
 
         fetchPlaylists();
-        
+
     }, []);
 
     return (

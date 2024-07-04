@@ -10,7 +10,7 @@ interface SongModel2Props {
     playlists: Playlist[]
 }
 
-const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] }) => {
+const SongModel2: React.FC<SongModel2Props> = ({ data, onClick, playlists = [] }) => {
     const imagePath = useLoadImage(data)
 
     return (
@@ -67,14 +67,14 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
                 gap-x-3
                 ">
                 <div className="flex items-center">
-                    <LikeButton songId={data.id}/>
+                    <LikeButton songId={data.id} />
                 </div>
                 <div>
-                    <SongButton playlists={playlists} data={data}/>
+                    <SongButton playlists={playlists} data={data} />
                 </div>
             </div>
         </div>
     )
 }
- 
+
 export default SongModel2

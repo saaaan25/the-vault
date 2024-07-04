@@ -28,7 +28,7 @@ const Search = async ({ searchParams }: SearchProps) => {
       ) : (
         <div>
           <h3 className="text-black text-xl font-bold mt-2 ml-14"> Busquedas recientes </h3>
-            <SongRecent />
+          <SongRecent />
         </div>
       )}
     </div>

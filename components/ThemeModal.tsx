@@ -56,9 +56,9 @@ const ThemeModal: React.FC<ThemeModalProps> = ({ isOpen, onClose }) => {
                   handleClickColor(color.baseColor);
                 }}
               ></button>
-              
+
               <div style={{ width: '30px' }}></div>
-              
+
               <div className="flex mr-8">
                 {color.shades.map((shade, idx) => (
                   <div
