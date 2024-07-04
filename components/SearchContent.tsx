@@ -1,9 +1,6 @@
 "use client";
 
 import { Song, Playlist } from "@/types";
-import MediaItem from "./MediaItem";
-import LikeButton from "./LikeButton";
-import SongButton from "./SongButton";
 import useOnPlay from "@/hooks/useOnPlay";
 import { useRecentSearch } from "@/hooks/useRecentSearch";
 import { useEffect } from "react";
@@ -15,15 +12,15 @@ interface SearchContentProps {
 }
 const SearchContent: React.FC<SearchContentProps> = ({ songs, playlists }) => {
    const onPlay = useOnPlay(songs);
-   const {queue, addToRecent, removeFromRecent} = useRecentSearch();
+   const { queue, addToRecent, removeFromRecent } = useRecentSearch();
    useEffect(() => {
       if (songs.length === 1) {
-         if (queue.size() >= 5){
+         if (queue.size() >= 5) {
             removeFromRecent()
          }
          addToRecent(songs[0])
       }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    if (songs.length === 0) {
@@ -38,12 +35,12 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs, playlists }) => {
          {songs.map((song) => (
             <div key={song.id} className="flex items-center gap-x-4 w-full">
                <div className="flex-1">
-                  <SongModel2 
-                    key={song.id}
-                    onClick={(id: number) => onPlay(id)}
-                    data={song}
-                    playlists={[]}
-                    />
+                  <SongModel2
+                     key={song.id}
+                     onClick={(id: number) => onPlay(id)}
+                     data={song}
+                     playlists={playlists}
+                  />
                </div>
             </div>
          ))}
