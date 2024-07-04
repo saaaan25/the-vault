@@ -9,6 +9,7 @@ import ToasterProvider from "@/providers/ToasterProvider"
 import { PlaylistProvider } from "@/providers/PlaylistProvider"
 import Player from "@/components/Player"
 import { QueueProvider } from "@/hooks/useQueue"
+import { RecentSearchProvider } from "@/hooks/useRecentSearch"
 
 const font = Montserrat({ subsets: ["latin"] })
 
@@ -33,8 +34,10 @@ export default function RootLayout({
                     <UserProvider>
                         <PlaylistProvider>
                             <QueueProvider>
-                                <Sidebar>{children}</Sidebar>
-                                <Player/>
+                                <RecentSearchProvider>
+                                    <Sidebar>{children}</Sidebar>
+                                    <Player/>
+                                </RecentSearchProvider>
                             </QueueProvider>
                         </PlaylistProvider>
                         <ModalProvider/>

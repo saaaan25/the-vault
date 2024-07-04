@@ -6,15 +6,110 @@ html,
 body,
 :root {
   height: 100%;
-  background-color: #F3E6DE;
+  /*--custom-color: #F0B2B7;
+  --custom-color-2: #F3E6DE;
+  --custom-color-3: #EFCED0;
+  --custom-color-4: #737373;
+  --custom-color-5: #F6DCDE;
+  --custom-color-6: #DDACAF;
+  --custom-color-7: #FF9F9F;
+  --modal-background: url('/images/modalbg-pink.png');*/
 }
-
 .bg-custom-color {
-  background-color: #F0B2B7;
+  background-color: var(--custom-color);
+}
+.border-custom-color {
+  border-color: var(--custom-color);
+}
+.text-custom-color {
+  color: var(--custom-color); 
+}
+.hover-bg-custom-color:hover {
+  background-color: var(--custom-color);
 }
 
 .bg-custom-color-2 {
-  background-color: #F3E6DE;
+  background-color: var(--custom-color-2);
+}
+.border-custom-color-2 {
+  border-color: var(--custom-color-2);
+}
+.text-custom-color-2{
+  color: var(--custom-color-2); 
+}
+.hover-bg-custom-color-2:hover {
+  background-color: var(--custom-color-2);
+}
+
+.bg-custom-color-3 {
+  background-color: var(--custom-color-3);
+}
+.border-custom-color-3 {
+  border-color: var(--custom-color-3);
+}
+.text-custom-color-3 {
+  color: var(--custom-color-3); 
+}
+.hover-bg-custom-color-3:hover {
+  background-color: var(--custom-color-3);
+}
+
+.bg-custom-color-4 {
+  background-color: var(--custom-color-4);
+}
+.border-custom-color-4 {
+  border-color: var(--custom-color-4);
+}
+.text-custom-color-4 {
+  color: var(--custom-color-4); 
+}
+.hover-bg-custom-color-4:hover {
+  background-color: var(--custom-color-4);
+}
+
+.bg-custom-color-5 {
+  background-color: var(--custom-color-5);
+}
+.border-custom-color-5 {
+  border-color: var(--custom-color-5);
+}
+.text-custom-color-5 {
+  color: var(--custom-color-5); 
+}
+.hover-bg-custom-color-5:hover {
+  background-color: var(--custom-color-5);
+}
+
+.bg-custom-color-6 {
+  background-color: var(--custom-color-6);
+}
+.border-custom-color-6 {
+  border-color: var(--custom-color-6);
+}
+.text-custom-color-6 {
+  color: var(--custom-color-6); 
+}
+.hover-bg-custom-color-6:hover {
+  background-color: var(--custom-color-6);
+}
+
+.bg-custom-color-7 {
+  background-color: var(--custom-color-7);
+}
+.border-custom-color-7 {
+  border-color: var(--custom-color-7);
+}
+.text-custom-color-7 {
+  color: var(--custom-color-7); 
+}
+.hover-bg-custom-color-7:hover {
+  background-color: var(--custom-color-7);
+}
+
+.modal-fondo {
+  background-image: var(--modal-background);
+  background-size: cover;
+  background-position: center;
 }
 
 @font-face {

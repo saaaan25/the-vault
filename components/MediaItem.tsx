@@ -4,23 +4,26 @@ import useLoadImage from "@/hooks/useLoadImage";
 import { Song } from "@/types";
 import Image from "next/image";
 import PlayButton from "./PlayButton";
+import usePlayer from "@/hooks/usePlayer";
 
 interface MediaItemProps {
    data: Song;
    onClick: (id: number) => void;
 }
 const MediaItem: React.FC<MediaItemProps> = ({ data, onClick}) => {
+   const player = usePlayer();
    const imageUrl = useLoadImage(data);
 
    const handleClick = () => {
       if (onClick) {
          onClick(data.id);
       }
+      return player.setId(data.id);
    }
    return (
       <div
          onClick={handleClick}
-         className="group flex items-center gap-x-3 hover:bg-custom-color-3 w-full p-2 rounded-md"
+         className="group flex items-center gap-x-3 hover-bg-custom-color-3 w-full p-2 rounded-md"
       >
          <div className="relative rounded-md min-h-[48px] min-w-[48px] overflow-hidden">
             <Image

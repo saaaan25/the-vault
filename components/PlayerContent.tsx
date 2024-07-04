@@ -202,7 +202,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                 </div>
                 <button className="flex 
                             rounded-full 
-                            hover:bg-custom-color-6 
+                            hover-bg-custom-color-6 
                             h-fit
                             p-2 
                             items-center 

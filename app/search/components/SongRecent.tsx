@@ -4,29 +4,31 @@ import { Queue } from "@/structures/queue";
 import SongModel1 from "@/components/SongModel1";
 import { Song } from "@/types";
 import { useState } from "react";
+import { useRecentSearch } from "@/hooks/useRecentSearch";
 
 const SongRecent = () => {
-    const [queue, setQueue] = useState(new Queue<Song>())
+    const { queue } = useRecentSearch(); 
     if (queue.size() === 0) {
         return (
-            <div className="flex justify-center items-center h-full w-full">
-                <p className="text-2xl">No hay busquedas recientes</p>
+            <div className="flex flex-col gap-y-2 w-full px-12 text-neutral-400 ml-2">
+                <p className="">No hay busquedas recientes</p>
             </div>
         )
     }
-    const songs = queue.getItems()
+    const songs = queue.getItems().reverse();
     return ( 
-    <div> 
+    <div className= "flex ml-14 gap-x-4 mt-4"> 
         {songs.map((item) => (
                 <SongModel1 
                 key={item.id}
                 onClick={() => {}}
                 data={item}
                 playlists={[]}
+                small={true} // Add the "small" property
                 />
             ))}
-    </div> );
-    //aqui hacer la logica de colas
+    </div> 
+    );
 }
  
 export default SongRecent;

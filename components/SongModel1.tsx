@@ -39,7 +39,7 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
                 gap-x-4
                 bg-custom-color-3
                 cursor-pointer
-                hover:bg-custom-color-5
+                hover-bg-custom-color-5
                 transition
                 p-3
             "

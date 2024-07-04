@@ -27,7 +27,7 @@ const AddPlaylistButton = () => {
                 ">
             <button className="
                 bg-custom-color-3
-                hover:bg-custom-color-6
+                hover-bg-custom-color-6
                 rounded-xl
                 shadow-lg 
                 h-[172px]

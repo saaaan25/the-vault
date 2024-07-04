@@ -31,6 +31,7 @@ const Modal:React.FC<ModalProps> = ({
                 "/>
                 <Dialog.Content
                 className="
+                modal-fondo
                 fixed
                 drop-shadow-md
                 border

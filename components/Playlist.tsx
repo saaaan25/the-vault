@@ -32,7 +32,7 @@ const PlaylistItem:React.FC<PlaylistItemProps> = ({data}) => {
                 gap-x-4
                 bg-custom-color-3
                 cursor-pointer
-                hover:bg-custom-color-3
+                hover-bg-custom-color-5
                 transition
                 p-3
             "

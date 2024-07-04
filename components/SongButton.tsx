@@ -30,7 +30,7 @@ const SongButton: React.FC<SongButtonProps> = ({ playlists = [], data }) => {
     };
 
     const triggerEspecific = (
-        <button className="flex items-center w-full px-2 py-2 mr-2 hover:bg-custom-color-6 rounded-md">
+        <button className="flex items-center w-full px-2 py-2 mr-2 hover-bg-custom-color-6 rounded-md">
         <BiSolidPlaylist size={20} className="mr-2" />
         <p>Agregar a la playlist</p>
         </button>
@@ -51,7 +51,7 @@ const SongButton: React.FC<SongButtonProps> = ({ playlists = [], data }) => {
         <button
         className="
             rounded-full
-            hover:bg-custom-color-6
+            hover-bg-custom-color-6
             h-[30px]
             w-[30px]
             flex
@@ -79,7 +79,7 @@ const SongButton: React.FC<SongButtonProps> = ({ playlists = [], data }) => {
             </div>
             <div>
                 <button
-                className="flex items-center w-full px-2 py-2 mr-2 hover:bg-custom-color-6 rounded-md"
+                className="flex items-center w-full px-2 py-2 mr-2 hover-bg-custom-color-6 rounded-md"
                 onClick={handleAddToQueue}
                 >
                 <BsFillPlayCircleFill size={20} className="mr-2" />
@@ -88,7 +88,7 @@ const SongButton: React.FC<SongButtonProps> = ({ playlists = [], data }) => {
             </div>
             <div>
                 <button
-                className="flex items-center w-full px-2 py-2 mr-2 hover:bg-custom-color-6 rounded-md"
+                className="flex items-center w-full px-2 py-2 mr-2 hover-bg-custom-color-6 rounded-md"
                 onClick={openQueue}
                 >
                 <FaList size={20} className="mr-2" />
