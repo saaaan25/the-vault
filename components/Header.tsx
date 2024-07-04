@@ -10,6 +10,7 @@ import useAuth from "@/hooks/useAuth"
 import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import { useUser } from "@/hooks/useUser"
 import toast from "react-hot-toast"
+import {selectedUserPalette} from '../hooks/useColorPalette';
 
 interface HeaderProps {
     children: React.ReactNode
@@ -21,7 +22,9 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
     const authModal = useAuth()
     
     const supabaseClient = useSupabaseClient()
-    const { user } = useUser()
+    const { user, theme } = useUser()
+
+    selectedUserPalette(theme);
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut()

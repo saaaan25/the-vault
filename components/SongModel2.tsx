@@ -16,7 +16,7 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
     return (
         <div className="
             bg-custom-color-2 
-            hover:bg-custom-color-3 
+            hover-bg-custom-color-3 
             w-full
             h-[80px]
             flex

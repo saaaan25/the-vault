@@ -84,7 +84,7 @@ export default function Home() {
         <h1 className="text-black text-2xl font-bold">Recientes</h1>
         <button
           className="bg-custom-color-6 cursor-pointer
-                    hover:bg-custom-color-3
+                    hover-bg-custom-color-3
                     transition
                     border rounded-xl border-custom-color-3 h-fit w-fit p-3 mt-3 mr-5 flex items-center justify-center"
           onClick={onClick}

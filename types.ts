@@ -8,6 +8,7 @@ export interface Playlist {
     image_path: string
 }
 
+
 export interface Song {
     id: number
     user_id: string
