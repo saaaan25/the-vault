@@ -34,14 +34,18 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs, playlists }) => {
    }
    return (
       <div className="group flex flex-col gap-y-2 w-full pl-12 pr-5">
-         {songs.map((item) => (
-                <SongModel2 
-                key={item.id}
-                onClick={() => {}}
-                data={item}
-                playlists={[]}
-                />
-            ))}
+         {songs.map((song) => (
+            <div key={song.id} className="flex items-center gap-x-4 w-full">
+               <div className="flex-1">
+                  <SongModel2 
+                    key={song.id}
+                    onClick={(id: number) => onPlay(id)}
+                    data={song}
+                    playlists={[]}
+                    />
+               </div>
+            </div>
+         ))}
       </div>
    )
 }
