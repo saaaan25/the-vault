@@ -13,8 +13,11 @@ import Slider from "./Slider"
 import usePlayer from "@/hooks/usePlayer"
 import { useEffect, useRef, useState } from "react"
 import useSound from "use-sound"
-import { useQueue } from "@/hooks/useQueue"
-
+import logUserActivity from "@/actions/logUserActivity"
+import { useUser } from "@/hooks/useUser"
+import { useSessionContext } from "@supabase/auth-helpers-react"
+import { log } from "console"
+import {useQueue} from "@/hooks/useQueue"
 interface PlayerContentProps {
     song: Song
     songUrl: string
@@ -25,6 +28,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     songUrl
 }) => {
     const imagePath = useLoadImage(song)
+    const { user } = useUser();
+    const { supabaseClient } = useSessionContext();
     const player = usePlayer()
     const [volume, setVolume] = useState(1)
     const [isPlaying, setIsPlaying] = useState(false)
@@ -76,6 +81,9 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             setIsPlaying(false)
             onPlayNext()
             removeFromQueue()
+            if (user) {
+                logUserActivity(supabaseClient, user.id, song.id)
+            }
         },
         onpause: () => setIsPlaying(false),
         format: ['mp3']
