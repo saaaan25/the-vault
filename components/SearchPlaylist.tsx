@@ -1,6 +1,7 @@
 "use client"
 
-import { busquedaBinaria, ordenarPorTitulo } from "@/structures/binarysearch";
+import { busquedaBinaria } from "@/structures/binarysearch";
+import { shellsort } from "@/structures/shellsort";
 import { Playlist } from "@/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react"
@@ -21,7 +22,7 @@ const SearchPlaylist: React.FC<SearchPlaylistProps> = ({playlists = []}) => {
 
     const handleButtonClick = () => {
         console.log('El valor del input es:', inputValue)
-        const playlistsInOrder = ordenarPorTitulo(playlists)
+        const playlistsInOrder = shellsort(playlists)
         const id = busquedaBinaria(playlistsInOrder, inputValue)
 
         if (id !== null) {

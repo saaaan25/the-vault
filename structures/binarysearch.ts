@@ -1,9 +1,5 @@
 import { Playlist } from "@/types"
 
- export function ordenarPorTitulo(arr: Playlist[]): Playlist[] {
-    return arr.sort((a, b) => a.name.localeCompare(b.name))
-}
-
 export function busquedaBinaria(arr: Playlist[], palabra: string): number | null {
     let izquierda = 0;
     let derecha = arr.length - 1;

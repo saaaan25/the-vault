@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { parse } from "papaparse";
-import uniqid from "uniqid";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -47,6 +46,18 @@ const UploadCSVModal = () => {
         });
     };
 
+    const checkFileExistence = async (bucket: string, path: string) => {
+        const { data, error } = await supabaseClient.storage.from(bucket).list('', {
+            search: path
+        });
+        return data && data.length > 0 && !error;
+    };
+
+    const getPublicUrl = (bucket: string, path: string) => {
+        const { data } = supabaseClient.storage.from(bucket).getPublicUrl(path);
+        return data.publicUrl;
+    };
+
     const onSubmit: SubmitHandler<FieldValues> = async (values) => {
         try {
             setIsLoading(true);
@@ -61,56 +72,31 @@ const UploadCSVModal = () => {
             const songsData = await handleCSVUpload(csvFile) as any[];
 
             for (const song of songsData) {
-                const { autor, title, songPath, imagePath } = song;
+                const { autor, title, songData, imageData } = song;
 
-                try {
-                    const songBlob = await fetch(songPath).then(res => {
-                        if (!res.ok) throw new Error('Error fetching song');
-                        return res.blob();
-                    });
-                    const imageBlob = await fetch(imagePath).then(res => {
-                        if (!res.ok) throw new Error('Error fetching image');
-                        return res.blob();
-                    });
+                const songExists = await checkFileExistence('songs', songData);
+                const imageExists = await checkFileExistence('images', imageData);
 
-                    const songFile = new File([songBlob], `song-${title}`);
-                    const imageFile = new File([imageBlob], `image-${title}`);
+                if (!songExists || !imageExists) {
+                    toast.error(`Archivos no encontrados para la canción "${title}": songData=${songData}, imageData=${imageData}`);
+                    continue;
+                }
 
-                    const uniqueID = uniqid();
+                const songUrl = getPublicUrl('songs', songData);
+                const imageUrl = getPublicUrl('images', imageData);
+                console.log(songUrl, imageUrl)
 
-                    const { data: songData, error: songError } = await supabaseClient.storage.from('songs')
-                        .upload(`song-${title}-${uniqueID}`, songFile, {
-                            cacheControl: '3600',
-                            upsert: false
-                        });
+                const { error: supabaseError } = await supabaseClient.from('songs').insert({
+                    user_id: user.id,
+                    title: title,
+                    autor: autor,
+                    image_path: imageData,
+                    song_path: songData
+                });
 
-                    if (songError) {
-                        throw new Error(`Song upload error: ${songError.message}`);
-                    }
-
-                    const { data: imageData, error: imageError } = await supabaseClient.storage.from('images')
-                        .upload(`image-${title}-${uniqueID}`, imageFile, {
-                            cacheControl: '3600',
-                            upsert: false
-                        });
-
-                    if (imageError) {
-                        throw new Error(`Image upload error: ${imageError.message}`);
-                    }
-
-                    const { error: supabaseError } = await supabaseClient.from('songs').insert({
-                        user_id: user.id,
-                        title: title,
-                        autor: autor,
-                        image_path: imageData.path,
-                        song_path: songData.path
-                    });
-
-                    if (supabaseError) {
-                        throw new Error(`Database insert error: ${supabaseError.message}`);
-                    }
-                } catch (error) {
-                    toast.error(`Error processing song "${title}": `);
+                if (supabaseError) {
+                    setIsLoading(false);
+                    return toast.error(supabaseError.message);
                 }
             }
 
@@ -120,7 +106,7 @@ const UploadCSVModal = () => {
             reset();
 
         } catch (error) {
-            toast.error(`Error general: `);
+            toast.error("Algo salió mal");
         } finally {
             setIsLoading(false);
         }
@@ -129,7 +115,7 @@ const UploadCSVModal = () => {
     return (
         <Modal
             title="Sube múltiples canciones"
-            description="Selecciona un archivo CSV para subir múltiples canciones"
+            description="Selecciona un archivo CSV para subir canciones"
             isOpen={csvUploadModal.isOpen}
             onChange={onChange}>
             <form onSubmit={handleSubmit(onSubmit)} className="flex justify-end flex-col gap-y-4 ml-5 mr-5">

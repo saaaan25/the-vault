@@ -11,6 +11,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import { useUser } from "@/hooks/useUser"
 import toast from "react-hot-toast"
 import {selectedUserPalette} from '../hooks/useColorPalette';
+import { RiLoginBoxLine, RiLogoutBoxLine } from "react-icons/ri"
 
 interface HeaderProps {
     children: React.ReactNode
@@ -135,27 +136,27 @@ const Header: React.FC<HeaderProps> = ( {children, className}) => {
                 {user ? (
                     <button className="
                         bg-custom-color
-                        pl-5
-                        pr-5
-                        pt-0.5
-                        pb-0.5
+                        p-2
                         rounded
+                        flex
+                        items-center
+                        justify-center
                         "
                             onClick={handleLogout}>
-                        Cerrar Sesión
+                        <RiLogoutBoxLine size={20}/>
                     </button>
                 ) : (
                 <div>
                     <button className="
                         bg-custom-color
-                        pl-5
-                        pr-5
-                        pt-0.5
-                        pb-0.5
+                        p-2
                         rounded
+                        flex
+                        items-center
+                        justify-center
                         "
                             onClick={authModal.onOpen}>
-                        Iniciar Sesión
+                        <RiLoginBoxLine size={20}/>
                     </button>
                 </div>)}
             </div>

@@ -23,6 +23,7 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs, playlists }) => {
          }
          addToRecent(songs[0])
       }
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    if (songs.length === 0) {

@@ -6,6 +6,7 @@ import useAuth from "@/hooks/useAuth"
 import useUpload from "@/hooks/useUpload"
 import { useUser } from "@/hooks/useUser"
 import PageContent from './components/PageContent'
+import { RiFileLine } from 'react-icons/ri';
 import { GoPlus } from 'react-icons/go';
 import { Playlist } from '@/types';
 import { MdLibraryAdd } from 'react-icons/md';
@@ -95,7 +96,7 @@ export default function Home() {
         <h1 className="text-black text-2xl font-bold">Recientes</h1>
         <div className='flex mt-3 mr-5 gap-x-2'>
           <button
-            className="bg-custom-color-6 cursor-pointer
+            className="bg-custom-color-5 cursor-pointer
                       hover:bg-custom-color-3
                       transition
                       border rounded-xl border-custom-color-3 h-fit w-fit p-3 flex items-center justify-center"
@@ -103,12 +104,12 @@ export default function Home() {
           >
             <GoPlus/>
           </button>
-          <button className="bg-custom-color-6 cursor-pointer
+          <button className="bg-custom-color-5 cursor-pointer
                       hover:bg-custom-color-3
                       transition
                       border rounded-xl border-custom-color-3 h-fit w-fit p-3 flex items-center justify-center"
             onClick={openModal}>
-            <MdLibraryAdd/>
+            <RiFileLine className="file-icon" />
           </button>
         </div>
         
