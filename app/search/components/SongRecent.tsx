@@ -10,7 +10,7 @@ const SongRecent = () => {
     const { queue } = useRecentSearch(); 
     if (queue.size() === 0) {
         return (
-            <div className="flex flex-col gap-y-2 w-full px-12 text-neutral-400">
+            <div className="flex flex-col gap-y-2 w-full px-12 text-neutral-400 ml-2">
                 <p className="">No hay busquedas recientes</p>
             </div>
         )
