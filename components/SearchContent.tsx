@@ -12,13 +12,15 @@ interface SearchContentProps {
 }
 const SearchContent: React.FC<SearchContentProps> = ({ songs, playlists }) => {
    const onPlay = useOnPlay(songs);
-   const { queue, addToRecent, removeFromRecent } = useRecentSearch();
+   const { queue, addToRecent, removeFromRecent, isInRecent } = useRecentSearch();
    useEffect(() => {
       if (songs.length === 1) {
          if (queue.size() >= 5) {
             removeFromRecent()
          }
-         addToRecent(songs[0])
+         if(!isInRecent(songs[0])) {
+            addToRecent(songs[0])
+         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])

@@ -3,7 +3,7 @@ import { Playlist, Song } from "@/types"
 import Image from 'next/image'
 import PlayButton from "./PlayButton"
 import SongButton from "./SongButton"
-import logUserActivity  from "@/actions/logUserActivity";
+import logUserActivity from "@/actions/logUserActivity";
 import { useUser } from "@/hooks/useUser";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 interface SongModel1Props {
@@ -13,7 +13,7 @@ interface SongModel1Props {
     small: boolean | null
 }
 
-const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small}) => {
+const SongModel1: React.FC<SongModel1Props> = ({ data, onClick, playlists, small }) => {
     const imagePath = useLoadImage(data)
     const { user } = useUser();
     const { supabaseClient } = useSessionContext();
@@ -43,7 +43,7 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
                 transition
                 p-3
             "
-            {...(small && {style: {width: '150px'}})}
+            {...(small && { style: { width: '150px' } })}
         >
             <div
                 className="
@@ -55,17 +55,17 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
                 overflow-hidden
                 "
             >
-                <Image 
-                    className="object-cover" 
-                    src={imagePath || '/images/pink-heart-hi.png'}  
+                <Image
+                    className="object-cover"
+                    src={imagePath || '/images/pink-heart-hi.png'}
                     fill
-                    alt="Image"         
+                    alt="Image"
                 />
             </div>
             <div className="flex justify-start w-full">
                 <div className="flex flex-col items-start w-full pt-4 gap-y-1">
                     <p className="font-semibold truncate w-full">
-                    {data.title} 
+                        {data.title}
                     </p>
                     <p
                         className="
@@ -75,22 +75,22 @@ const SongModel1:React.FC<SongModel1Props> = ({data, onClick, playlists, small})
                             truncate
                         "
                     >
-                    {data.autor} 
+                        {data.autor}
                     </p>
                 </div>
                 <div className="flex items-center justify-end">
-                    <SongButton data={data} playlists={playlists}/>
+                    <SongButton data={data} playlists={playlists} />
                 </div>
-                
+
             </div>
             <div className="
                 absolute
                 bottom-20
                 right-5">
-                <PlayButton onClick={handleClick} data={data}/>
+                <PlayButton onClick={handleClick} data={data} />
             </div>
         </div>
     )
 }
- 
+
 export default SongModel1

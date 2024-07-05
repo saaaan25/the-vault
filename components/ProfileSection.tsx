@@ -10,8 +10,9 @@ import toast from "react-hot-toast";
 import { FaPalette } from "react-icons/fa";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { FaPencilAlt } from "react-icons/fa";
-import {useUser} from "@/hooks/useUser";
+import { useUser } from "@/hooks/useUser";
 import { TbCrown, TbCrownOff } from "react-icons/tb";
+import Image from 'next/image';
 
 const ProfileSection: React.FC = () => {
   const { user, fullname, img: initialImg } = useUser();
@@ -32,7 +33,7 @@ const ProfileSection: React.FC = () => {
   const openThemeModal = () => {
     setIsThemeModalOpen(true);
   };
-  
+
   const closeThemeModal = () => {
     setIsThemeModalOpen(false);
   };
@@ -40,7 +41,7 @@ const ProfileSection: React.FC = () => {
   const openNameModal = () => {
     setIsNameModalOpen(true);
   };
-  
+
   const closeNameModal = () => {
     setIsNameModalOpen(false);
   };
@@ -48,7 +49,7 @@ const ProfileSection: React.FC = () => {
   const openChangeImageModal = () => {
     setIsChangeImageModalOpen(true);
   };
-  
+
   const closeChangeImageModal = () => {
     setIsChangeImageModalOpen(false);
   };
@@ -96,11 +97,12 @@ const ProfileSection: React.FC = () => {
               </div>
               <div style={{ display: 'grid', placeItems: 'center', height: '10vh' }}>
                 <div className="relative" onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
-                  <img
+                  <Image
                     src={profileImg}
                     alt="Foto de usuario"
                     className="rounded-full"
-                    style={{ width: '200px', height: '200px' }}
+                    width={200}
+                    height={200}
                   />
                   {isHovered && (
                     <div className="absolute inset-0 flex justify-center items-center">
@@ -113,7 +115,7 @@ const ProfileSection: React.FC = () => {
                   )}
                 </div>
                 <div className="p-2"></div>
-                <div className="flex justify-between items-center flex gap-2">
+                <div className="flex justify-between items-center gap-2">
                   <h3 className="text-black text-4xl">{currentName}</h3>
                   <button style={{ fontSize: '24px' }} onClick={openNameModal}>
                     <FaPencilAlt />
