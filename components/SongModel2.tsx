@@ -24,24 +24,25 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
             rounded-lg
             justify-between
             pr-3
+            relative
             ">
             <div className="
+                relative
                 ml-6
+                h-[58px]
+                w-[120px]
                 mr-4
                 rounded-xl
-                h-[58px]
-                w-[58px]
-                relative
                 flex
-                items-center
                 justify-center
+                items-center
             ">
                 <Image
                     className="object-cover"
                     src={imagePath || '/images/portadapredet.png'}
                     alt="Image"
-                    width={110}
                     height={110}
+                    width={110}
                     style={{ borderRadius: '5px' }}
                 />
                 <div className="
@@ -61,9 +62,9 @@ const SongModel2:React.FC<SongModel2Props> = ({ data, onClick, playlists = [] })
                 </div>
             </div>
             <div className="
-                w-[12%] 
+                w-full 
                 flex 
-                justify-center
+                justify-end
                 gap-x-3
                 ">
                 <div className="flex items-center">

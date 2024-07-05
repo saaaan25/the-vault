@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import loading from '@/public/images/loading.gif'
+import loading from '@/public/images/cinnaloading.gif'
 
 const LoadingPage = () => {
     return (

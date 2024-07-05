@@ -92,7 +92,7 @@ const PlaylistChoice: React.FC<PlaylistChoiceProps> = ({playlists = [], song1}) 
     return (
         <div>
             {playlists.map((item) => (
-                <button key={item.id} className="flex items-center w-full px-2 py-2 mr-2 hover-bg-custom-color-6 rounded-md"
+                <button key={item.id} className="flex items-center w-full px-2 py-2 mr-2 hover-bg-custom-color-5 rounded-md"
                         onClick={() => addToAPlaylist(item.id, song1.title)}
                         disabled={loading[item.id]}>  
                     <BiSolidPlaylist size={20} className="mr-2"/>

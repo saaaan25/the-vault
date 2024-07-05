@@ -33,7 +33,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const player = usePlayer()
     const [volume, setVolume] = useState(1)
     const [isPlaying, setIsPlaying] = useState(false)
-    const { removeFromQueue } = useQueue()
+    const { queue, isInQueue, removeFromQueue } = useQueue()
 
     const router = useRouter()
 
@@ -50,6 +50,9 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
         }
 
         const currentIndex = player.ids.findIndex((id) => id === player.activeId)
+        if (isInQueue(song)) {
+            removeFromQueue()
+        }
         const nextSong = player.ids[currentIndex + 1]
 
         if (!nextSong) {
